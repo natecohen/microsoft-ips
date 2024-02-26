@@ -1,0 +1,6 @@
+attachments.office365-net.us
+autodiscover-s.office365.us
+manage.office365.us
+outlook.office365.us
+protection.office365.us
+scc.office365.us

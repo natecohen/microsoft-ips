@@ -1,0 +1,3 @@
+attachments.office365-net.cn
+partner.outlook.cn
+protection.partner.outlook.cn

@@ -1,0 +1,12 @@
+adl.windows.com
+aka.ms
+compass-ssl.microsoft.com
+keydelivery.mediaservices.windows.net
+lync.com
+mlccdn.blob.core.windows.net
+mlccdnprod.azureedge.net
+secure.skypeassets.com
+skype.com
+streaming.mediaservices.windows.net
+teams.microsoft.com
+users.storage.live.com

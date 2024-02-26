@@ -1,0 +1,7 @@
+admin.exchange.apps.mil
+attachments-dod.office365-net.us
+autodiscover-s-dod.office365.us
+outlook-dod.office365.us
+protection.apps.mil
+protection.office365.us
+webmail.apps.mil

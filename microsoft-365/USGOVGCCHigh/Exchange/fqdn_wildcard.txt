@@ -1,0 +1,12 @@
+*.manage.office365.us
+*.protection.office365.us
+*.scc.office365.us
+attachments.office365-net.us
+autodiscover.*.mail.onmicrosoft.com
+autodiscover.*.mail.onmicrosoft.us
+autodiscover.*.onmicrosoft.com
+autodiscover.*.onmicrosoft.us
+autodiscover-s.office365.us
+manage.office365.us
+outlook.office365.us
+scc.office365.us

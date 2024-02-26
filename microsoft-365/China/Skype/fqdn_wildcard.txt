@@ -1,0 +1,3 @@
+*.partner.lync.cn
+*.teams.microsoftonline.cn
+teams.microsoftonline.cn

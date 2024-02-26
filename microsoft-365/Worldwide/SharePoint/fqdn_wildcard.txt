@@ -1,0 +1,14 @@
+*.search.production.apac.trafficmanager.net
+*.search.production.emea.trafficmanager.net
+*.search.production.us.trafficmanager.net
+*.sharepoint.com
+*.sharepointonline.com
+*.svc.ms
+*.wns.windows.com
+admin.onedrive.com
+g.live.com
+officeclient.microsoft.com
+oneclient.sfx.ms
+spoprod-a.akamaihd.net
+ssw.live.com
+storage.live.com

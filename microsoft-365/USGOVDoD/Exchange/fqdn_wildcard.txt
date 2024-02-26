@@ -1,0 +1,11 @@
+*.protection.apps.mil
+*.protection.office365.us
+admin.exchange.apps.mil
+attachments-dod.office365-net.us
+autodiscover.*.mail.onmicrosoft.com
+autodiscover.*.mail.onmicrosoft.us
+autodiscover.*.onmicrosoft.com
+autodiscover.*.onmicrosoft.us
+autodiscover-s-dod.office365.us
+outlook-dod.office365.us
+webmail.apps.mil
