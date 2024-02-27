@@ -14,14 +14,16 @@ Some may be split further by service, and include an "All" subfolder with combin
 
 ## Sources
 
-- microsoft-365 - https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-endpoints?view=o365-worldwide
+- microsoft-365 - https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-endpoints
   - Microsoft provides JSON and CSV
 - wsus - https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/2-configure-wsus#21-configure-network-connections
+  - Microsoft does not provide programatic access or lists changes
+- office-mac - https://learn.microsoft.com/en-us/microsoft-365/enterprise/network-requests-in-office-2016-for-mac
   - Microsoft does not provide programatic access or lists changes
 
 ## Todo
 
-- Automation using Github Actions
+- Automation using GitHub Actions
 - Addition of more services
 
 ## Will not implement

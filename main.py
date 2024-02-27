@@ -3,8 +3,17 @@ import json
 import re
 import urllib.error
 import urllib.request
+from urllib.parse import urlparse
+
 import uuid
 from pathlib import Path
+
+
+def write_list(directory, filename, items):
+    if items:
+        with open(directory / filename, "w") as f:
+            for item in items:
+                f.write(f"{item}\n")
 
 
 def natsort_fqdn(s):
@@ -31,11 +40,11 @@ def natsort_ip(ip_list):
     return sorted(ip_list, key=ip_sort_key)
 
 
-def get_json_data(url):
+def get_response_data(url):
     try:
         with urllib.request.urlopen(url) as response:
             data = response.read().decode()
-            return json.loads(data)
+            return data
     except urllib.error.URLError as e:
         raise Exception(f"Error: {e} while fetching data from {url}")
 
@@ -90,13 +99,13 @@ def process_m365():
 
         json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ClientRequestId={client_request_id}"
         try:
-            data = get_json_data(json_url)
+            data = json.loads(get_response_data(json_url))
 
             # For whatever reason, the MEM serviceArea is not included by default
             if endpoint in mem_endpoints:
                 try:
                     mem_json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ServiceAreas=MEM&ClientRequestId={client_request_id}"
-                    mem_json_data = get_json_data(mem_json_url)
+                    mem_json_data = json.loads(get_response_data(mem_json_url))
 
                     for obj in mem_json_data:
                         if obj.get("serviceArea") == "MEM":
@@ -145,12 +154,50 @@ def process_m365():
             write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
 
 
-def write_list(directory, filename, items):
-    if items:
-        with open(directory / filename, "w") as f:
-            for item in items:
-                f.write(f"{item}\n")
+def process_office_for_mac():
+    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/microsoft-365-docs/public/microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md"
+
+    office_mac_fqdns = set()
+
+    try:
+        md_data = get_response_data(md_url).splitlines()
+
+        in_table = False
+
+        for line in md_data:
+            stripped_line = line.strip()
+
+            # Start of a new table
+            if stripped_line.startswith("|") and "---" in stripped_line:
+                in_table = True
+                continue
+
+            # End of a table
+            if not stripped_line.startswith("|"):
+                in_table = False
+                continue
+
+            if in_table:
+                first_column_value = stripped_line.split("|")[1].strip()
+                raw_url = re.findall(r"`(.*?)`", first_column_value)[1]
+                parsed_uri = urlparse(raw_url)
+                fqdn = f"{parsed_uri.netloc}"
+                office_mac_fqdns.add(fqdn)
+
+    except:
+        pass
+
+    outdir = Path(__file__).parent / "office-mac"
+    outdir.mkdir(parents=True, exist_ok=True)
+
+    sorted_fqdn = sorted(office_mac_fqdns, key=natsort_fqdn)
+    write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+
+    fqdn_no_wildcard = return_fqdn_no_wildcard(office_mac_fqdns)
+    sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=natsort_fqdn)
+    write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
 
 
 if __name__ == "__main__":
     process_m365()
+    process_office_for_mac()
