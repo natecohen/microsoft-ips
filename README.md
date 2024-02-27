@@ -16,6 +16,8 @@ Some may be split further by service, and include an "All" subfolder with combin
 
 - microsoft-365 - https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-endpoints?view=o365-worldwide
   - Microsoft provides JSON and CSV
+- wsus - https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/2-configure-wsus#21-configure-network-connections
+  - Microsoft does not provide programatic access or lists changes
 
 ## Todo
 

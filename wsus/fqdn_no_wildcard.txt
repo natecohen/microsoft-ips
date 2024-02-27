@@ -1,0 +1,10 @@
+delivery.mp.microsoft.com
+dl.delivery.mp.microsoft.com
+download.microsoft.com
+download.windowsupdate.com
+go.microsoft.com
+ntservicepack.microsoft.com
+update.microsoft.com
+windowsupdate.com
+windowsupdate.microsoft.com
+wustat.windows.com
