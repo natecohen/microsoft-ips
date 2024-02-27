@@ -1,0 +1,4 @@
+* text=auto
+
+*.md diff=markdown
+*.py diff=python
