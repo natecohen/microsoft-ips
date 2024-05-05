@@ -1,0 +1,12 @@
+*.aadconnecthealth.microsoftazure.us
+*.blob.core.usgovcloudapi.net
+*.servicebus.usgovcloudapi.net
+aadcdn.msauth.net
+aadcdn.msftauth.net
+autoupdate.msappproxy.us
+login.microsoftonline.us
+management.usgovcloudapi.net
+policykeyservice.aadcdi.azure.us
+secure.aadcdn.microsoftonline-p.com
+www.microsoft.com
+www.office.com

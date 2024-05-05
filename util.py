@@ -97,12 +97,12 @@ def md_table_to_dict(table_string):
         elif i == 1:
             continue
         else:
-            ret.append({keys[_i]: v.strip() for _i, v in enumerate(l.split("|")) if _i > 0 and _i < len(keys) - 1})
+            ret.append({keys[_i]: v.strip() for _i, v in enumerate(l.split("|")) if 0 < _i < len(keys) - 1})
 
     return ret
 
 
-re_url = re.compile(r"((?:<.*?>\.)?(?:[A-Za-z0-9\-*]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
+re_url = re.compile(r"((?:<.*?>\.)?(?:(?:\*\.?)?[A-Za-z0-9\-]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
 re_ipv6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
 re_ipv4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
 
@@ -111,7 +111,7 @@ def extract_network_item(source_list, pattern):
     result_list = []
     for item in source_list:
         # Split multiline strings into separate lines
-        lines = re.split(r"\r?\n", item)
+        lines = re.split(r"\r?\n|<br\s*/?>", item)
         for line in lines:
             # Extract potential matches
             matches = re.findall(pattern, line)

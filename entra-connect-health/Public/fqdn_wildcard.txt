@@ -1,0 +1,14 @@
+*.aadconnecthealth.azure.com
+*.adhybridhealth.azure.com
+*.blob.core.windows.net
+*.servicebus.windows.net
+aadcdn.msauth.net
+aadcdn.msftauth.net
+autoupdate.msappproxy.net
+login.microsoftonline.com
+login.windows.net
+management.azure.com
+policykeyservice.dc.ad.msft.net
+secure.aadcdn.microsoftonline-p.com
+www.microsoft.com
+www.office.com

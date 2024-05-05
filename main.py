@@ -73,10 +73,8 @@ def process_m365():
             util.write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
 
 
-def process_office_for_mac():
-    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/microsoft-365-docs/public/microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md"
-
-    office_mac_fqdns = set()
+def process_markdown_common(md_url, url_key, outdir):
+    fqdns = set()
 
     try:
         md_data = util.get_response_data(md_url)
@@ -85,31 +83,45 @@ def process_office_for_mac():
 
         for table in extracted_tables:
             table_data = util.md_table_to_dict(table)
-
-            table_urls = [x["**URL**"] for x in table_data]
-
+            table_urls = [x.get(url_key) for x in table_data if url_key in x]
             extracted_fqdn_list = util.extract_network_item(table_urls, util.re_url)
-
-            office_mac_fqdns.update(extracted_fqdn_list)
-
+            fqdns.update(extracted_fqdn_list)
     except:
         pass
 
-    outdir = Path(__file__).parent / "office-mac"
+    outdir = Path(__file__).parent / outdir
     outdir.mkdir(parents=True, exist_ok=True)
 
-    sorted_fqdn = sorted(office_mac_fqdns, key=util.natsort_fqdn)
+    sorted_fqdn = sorted(fqdns, key=util.natsort_fqdn)
     util.write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
 
-    fqdn_no_wildcard = util.return_fqdn_no_wildcard(office_mac_fqdns)
+    fqdn_no_wildcard = util.return_fqdn_no_wildcard(fqdns)
     sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
     util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+
+
+def process_office_for_mac():
+    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/microsoft-365-docs/public/microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md"
+
+    process_markdown_common(md_url, "**URL**", "office-mac")
 
 
 def process_windows_11():
     md_url = "https://raw.githubusercontent.com/MicrosoftDocs/windows-itpro-docs/public/windows/privacy/manage-windows-11-endpoints.md"
 
-    windows_11_fqdns = set()
+    process_markdown_common(md_url, "Destination", "windows-11")
+
+
+def process_entra_connect():
+    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/identity/hybrid/connect/tshoot-connect-connectivity.md"
+
+    process_markdown_common(md_url, "URL", "entra-connect/Worldwide")
+
+
+def process_entra_connect_health():
+    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/identity/hybrid/connect/how-to-connect-health-agent-install.md"
+
+    health_fqdns = {"Public": set(), "AzureGovernment": set()}
 
     try:
         md_data = util.get_response_data(md_url)
@@ -119,24 +131,34 @@ def process_windows_11():
         for table in extracted_tables:
             table_data = util.md_table_to_dict(table)
 
-            table_urls = [x["Destination"] for x in table_data]
+            for d in table_data:
+                if d.get("Domain environment") == "General public":
+                    table_urls = [d.get("Required Azure service endpoints")]
+                    extracted_fqdn_list = util.extract_network_item(table_urls, util.re_url)
+                    health_fqdns["Public"].update(extracted_fqdn_list)
 
-            extracted_fqdn_list = util.extract_network_item(table_urls, util.re_url)
+                elif d.get("Domain environment") == "Azure Government":
+                    table_urls = [d.get("Required Azure service endpoints")]
+                    extracted_fqdn_list = util.extract_network_item(table_urls, util.re_url)
+                    health_fqdns["AzureGovernment"].update(extracted_fqdn_list)
 
-            windows_11_fqdns.update(extracted_fqdn_list)
+                else:
+                    break
 
     except:
         pass
 
-    outdir = Path(__file__).parent / "windows-11"
-    outdir.mkdir(parents=True, exist_ok=True)
+    for endpoint, urls in health_fqdns.items():
 
-    sorted_fqdn = sorted(windows_11_fqdns, key=util.natsort_fqdn)
-    util.write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+        outdir = Path(__file__).parent / "entra-connect-health" / endpoint
+        outdir.mkdir(parents=True, exist_ok=True)
 
-    fqdn_no_wildcard = util.return_fqdn_no_wildcard(windows_11_fqdns)
-    sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
-    util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+        sorted_fqdn = sorted(urls, key=util.natsort_fqdn)
+        util.write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+
+        fqdn_no_wildcard = util.return_fqdn_no_wildcard(urls)
+        sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
+        util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
 
 
 def process_azure():
@@ -190,4 +212,6 @@ if __name__ == "__main__":
     process_m365()
     process_office_for_mac()
     process_windows_11()
+    process_entra_connect()
+    process_entra_connect_health()
     process_azure()
