@@ -106,6 +106,39 @@ def process_office_for_mac():
     util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
 
 
+def process_windows_11():
+    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/windows-itpro-docs/public/windows/privacy/manage-windows-11-endpoints.md"
+
+    windows_11_fqdns = set()
+
+    try:
+        md_data = util.get_response_data(md_url)
+
+        extracted_tables = util.extract_tables(md_data)
+
+        for table in extracted_tables:
+            table_data = util.md_table_to_dict(table)
+
+            table_urls = [x["Destination"] for x in table_data]
+
+            extracted_fqdn_list = util.extract_network_item(table_urls, util.re_url)
+
+            windows_11_fqdns.update(extracted_fqdn_list)
+
+    except:
+        pass
+
+    outdir = Path(__file__).parent / "windows-11"
+    outdir.mkdir(parents=True, exist_ok=True)
+
+    sorted_fqdn = sorted(windows_11_fqdns, key=util.natsort_fqdn)
+    util.write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+
+    fqdn_no_wildcard = util.return_fqdn_no_wildcard(windows_11_fqdns)
+    sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
+    util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+
+
 def process_azure():
     endpoints = ["Public", "AzureGermany", "AzureGovernment", "China"]
 
@@ -156,4 +189,5 @@ def process_azure():
 if __name__ == "__main__":
     process_m365()
     process_office_for_mac()
+    process_windows_11()
     process_azure()

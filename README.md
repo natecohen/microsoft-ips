@@ -21,7 +21,7 @@ Some may be split further by service, and include an "All" subfolder with combin
 ### Static Sources
 - wsus - https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/2-configure-wsus#21-configure-network-connections
 - office-mac - https://learn.microsoft.com/en-us/microsoft-365/enterprise/network-requests-in-office-2016-for-mac
-- microsoft-365-additional - https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/microsoft-365/enterprise/additional-office365-ip-addresses-and-urls.md
+- microsoft-365-additional - https://learn.microsoft.com/en-us/microsoft-365/enterprise/additional-office365-ip-addresses-and-urls
   - skype-business-hybrid-and-meetings
     - https://learn.microsoft.com/en-us/microsoftteams/troubleshoot/teams-sign-in/sign-in-loop
     - https://learn.microsoft.com/en-us/skypeforbusiness/plan-your-deployment/clients-and-devices/minimum-network-requirements

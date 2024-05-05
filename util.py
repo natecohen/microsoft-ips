@@ -102,7 +102,7 @@ def md_table_to_dict(table_string):
     return ret
 
 
-re_url = re.compile(r"((?:<.*?>\.)?(?:[A-Za-z0-9\-*]+\.)+[a-z]{2,})(?:/.*?(?:\s|$))?")
+re_url = re.compile(r"((?:<.*?>\.)?(?:[A-Za-z0-9\-*]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
 re_ipv6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
 re_ipv4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
 
@@ -120,5 +120,10 @@ def extract_network_item(source_list, pattern):
                     # Normalize the IPs so single IP gets /32 or /128 appended
                     result_list.append(str(ipaddress.ip_network(match)))
                 else:
-                    result_list.append(match)
+                    # Edge case to avoid italicized markdown
+                    if not re.search(r"`\S*{}\S*`".format(re.escape(match)), line):
+                        if match.count("*") > 1:
+                            match = match.replace("*", "")
+
+                    result_list.append(match.lower())
     return result_list
