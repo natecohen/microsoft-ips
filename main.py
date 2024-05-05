@@ -1,91 +1,10 @@
-import ipaddress
 import json
 import re
-import urllib.error
-import urllib.request
-from urllib.parse import urlparse
-
 import uuid
 from pathlib import Path
+from urllib.parse import urlparse
 
-
-def write_list(directory, filename, items):
-    if items:
-        with open(directory / filename, "w") as f:
-            for item in items:
-                f.write(f"{item}\n")
-
-
-def natsort_fqdn(s):
-    split_text = re.split(r"(\d+|\*|\.)", s)
-    sort_key = []
-    for text in split_text:
-        if text.isdigit():
-            sort_key.append((int(text), text))
-        else:
-            sort_key.append((0, text))
-    return sort_key
-
-
-# Sorts IPV6 before IVP4
-# Also sorts IPV6 with :: notation first since the addresses are expanded
-def natsort_ip(ip_list):
-    def ip_sort_key(ip):
-        addr = ipaddress.ip_network(ip)
-        if isinstance(addr, ipaddress.IPv6Network):
-            return 0, addr.network_address.packed
-        else:
-            return 1, addr.network_address.packed
-
-    return sorted(ip_list, key=ip_sort_key)
-
-
-def get_response_data(url):
-    try:
-        with urllib.request.urlopen(url) as response:
-            data = response.read().decode()
-            return data
-    except urllib.error.URLError as e:
-        raise Exception(f"Error: {e} while fetching data from {url}")
-
-
-def return_fqdn_no_wildcard(url_set):
-    re_wildcard_start_only = re.compile(r"^\*[^*]*$")
-
-    urls_no_wildcard = set()
-    for url in url_set:
-        if re.match(re_wildcard_start_only, url):
-            non_wildcard_url = url[2:]
-            urls_no_wildcard.add(non_wildcard_url)
-        elif "*" in url:
-            # Discard URL with wildcard in the middle or end
-            pass
-        else:
-            # No wildcard
-            urls_no_wildcard.add(url)
-
-    return urls_no_wildcard
-
-
-def process_ips(ip_input, return_ipv6=False):
-    ipv6_with_cidr = set()
-    ipv4_with_cidr = set()
-
-    for ip_addr_s in ip_input:
-        try:
-            addr = ipaddress.ip_network(ip_addr_s)
-            if isinstance(addr, ipaddress.IPv6Network):
-                ipv6_with_cidr.add(ip_addr_s)
-            elif isinstance(addr, ipaddress.IPv4Network):
-                ipv4_with_cidr.add(ip_addr_s)
-        except ValueError:
-            # Ignore invalid IP ranges
-            pass
-
-    if return_ipv6 is True:
-        return ipv6_with_cidr
-    else:
-        return ipv4_with_cidr
+import util
 
 
 def process_m365():
@@ -99,13 +18,13 @@ def process_m365():
 
         json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ClientRequestId={client_request_id}"
         try:
-            data = json.loads(get_response_data(json_url))
+            data = json.loads(util.get_response_data(json_url))
 
             # For whatever reason, the MEM serviceArea is not included by default
             if endpoint in mem_endpoints:
                 try:
                     mem_json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ServiceAreas=MEM&ClientRequestId={client_request_id}"
-                    mem_json_data = json.loads(get_response_data(mem_json_url))
+                    mem_json_data = json.loads(util.get_response_data(mem_json_url))
 
                     for obj in mem_json_data:
                         if obj.get("serviceArea") == "MEM":
@@ -137,21 +56,21 @@ def process_m365():
             service_urls = service_areas[service_area]["urls"]
             service_ips = service_areas[service_area]["ips"]
 
-            sorted_fqdn = sorted(service_urls, key=natsort_fqdn)
-            write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+            sorted_fqdn = sorted(service_urls, key=util.natsort_fqdn)
+            util.write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
 
-            fqdn_no_wildcard = return_fqdn_no_wildcard(service_urls)
-            sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=natsort_fqdn)
-            write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+            fqdn_no_wildcard = util.return_fqdn_no_wildcard(service_urls)
+            sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
+            util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
 
-            sorted_ips = natsort_ip(service_ips)
-            write_list(outdir, "ip_cidr.txt", sorted_ips)
+            sorted_ips = util.natsort_ip(service_ips)
+            util.write_list(outdir, "ip_cidr.txt", sorted_ips)
 
-            sorted_ipv6 = natsort_ip(process_ips(service_ips, return_ipv6=True))
-            write_list(outdir, "ipv6_cidr.txt", sorted_ipv6)
+            sorted_ipv6 = util.natsort_ip(util.process_ips(service_ips, return_ipv6=True))
+            util.write_list(outdir, "ipv6_cidr.txt", sorted_ipv6)
 
-            sorted_ipv4 = natsort_ip(process_ips(service_ips, return_ipv6=False))
-            write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
+            sorted_ipv4 = util.natsort_ip(util.process_ips(service_ips, return_ipv6=False))
+            util.write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
 
 
 def process_office_for_mac():
@@ -160,7 +79,7 @@ def process_office_for_mac():
     office_mac_fqdns = set()
 
     try:
-        md_data = get_response_data(md_url).splitlines()
+        md_data = util.get_response_data(md_url).splitlines()
 
         in_table = False
 
@@ -190,14 +109,62 @@ def process_office_for_mac():
     outdir = Path(__file__).parent / "office-mac"
     outdir.mkdir(parents=True, exist_ok=True)
 
-    sorted_fqdn = sorted(office_mac_fqdns, key=natsort_fqdn)
-    write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+    sorted_fqdn = sorted(office_mac_fqdns, key=util.natsort_fqdn)
+    util.write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
 
-    fqdn_no_wildcard = return_fqdn_no_wildcard(office_mac_fqdns)
-    sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=natsort_fqdn)
-    write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+    fqdn_no_wildcard = util.return_fqdn_no_wildcard(office_mac_fqdns)
+    sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
+    util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+
+
+def process_azure():
+    endpoints = ["Public", "AzureGermany", "AzureGovernment", "China"]
+
+    for endpoint in endpoints:
+        json_url = f"https://azureipranges.azurewebsites.net/Data/{endpoint}.json"
+
+        try:
+            data = json.loads(util.get_response_data(json_url))
+
+            region_service_list = {}
+
+            for item in data["values"]:
+
+                # Skip generic AzureCloud
+                if item["id"].startswith("AzureCloud"):
+                    continue
+
+                region = item["properties"].get("region") or "_noregion"
+                system_service = item["properties"].get("systemService") or item.get("id")
+                address_prefixes = set(item["properties"]["addressPrefixes"])
+
+                if region not in region_service_list:
+                    region_service_list[region] = {}
+
+                if system_service not in region_service_list[region]:
+                    region_service_list[region][system_service] = set()
+
+                region_service_list[region][system_service].update(address_prefixes)
+
+            for region, services in region_service_list.items():
+                for service, address_prefixes in services.items():
+                    outdir = Path(__file__).parent / "azure" / endpoint / region / service
+                    outdir.mkdir(parents=True, exist_ok=True)
+
+                    sorted_ips = util.natsort_ip(address_prefixes)
+                    util.write_list(outdir, "ip_cidr.txt", sorted_ips)
+
+                    sorted_ipv6 = util.natsort_ip(util.process_ips(address_prefixes, return_ipv6=True))
+                    util.write_list(outdir, "ipv6_cidr.txt", sorted_ipv6)
+
+                    sorted_ipv4 = util.natsort_ip(util.process_ips(address_prefixes, return_ipv6=False))
+                    util.write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
+
+        except:
+            pass
 
 
 if __name__ == "__main__":
-    process_m365()
-    process_office_for_mac()
+    # process_m365()
+    # process_office_for_mac()
+    process_azure()

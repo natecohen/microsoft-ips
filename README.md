@@ -14,11 +14,11 @@ Some may be split further by service, and include an "All" subfolder with combin
 
 ## Sources
 
-## Dynamic Sources
+### Dynamic Sources
 - microsoft-365 - https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-endpoints
-  - Microsoft provides JSON and CSV
+- azure - https://azureipranges.azurewebsites.net/Home/About
 
-## Static Sources
+### Static Sources
 - wsus - https://learn.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/2-configure-wsus#21-configure-network-connections
 - office-mac - https://learn.microsoft.com/en-us/microsoft-365/enterprise/network-requests-in-office-2016-for-mac
 - microsoft-365-additional - https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/microsoft-365/enterprise/additional-office365-ip-addresses-and-urls.md
