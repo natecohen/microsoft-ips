@@ -76,3 +76,49 @@ def process_ips(ip_input, return_ipv6=False):
             pass
 
     return ip_with_cidr["ipv6"] if return_ipv6 else ip_with_cidr["ipv4"]
+
+
+def extract_tables(input_data):
+
+    # Regular expression pattern for a Markdown table
+    pattern = r"(^\|.*\|$\r?\n\|(?:\s|:)?-+.*\|(?:\r?\n\|.*\|)+)"
+    tables = re.findall(pattern, input_data, re.MULTILINE)
+
+    return tables
+
+
+def md_table_to_dict(table_string):
+    lines = table_string.split("\n")
+    ret = []
+    keys = []
+    for i, l in enumerate(lines):
+        if i == 0:
+            keys = [_i.strip() for _i in l.split("|")]
+        elif i == 1:
+            continue
+        else:
+            ret.append({keys[_i]: v.strip() for _i, v in enumerate(l.split("|")) if _i > 0 and _i < len(keys) - 1})
+
+    return ret
+
+
+re_url = re.compile(r"((?:<.*?>\.)?(?:[A-Za-z0-9\-*]+\.)+[a-z]{2,})(?:/.*?(?:\s|$))?")
+re_ipv6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
+re_ipv4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
+
+
+def extract_network_item(source_list, pattern):
+    result_list = []
+    for item in source_list:
+        # Split multiline strings into separate lines
+        lines = re.split(r"\r?\n", item)
+        for line in lines:
+            # Extract potential matches
+            matches = re.findall(pattern, line)
+            for match in matches:
+                if pattern in (re_ipv4, re_ipv6):
+                    # Normalize the IPs so single IP gets /32 or /128 appended
+                    result_list.append(str(ipaddress.ip_network(match)))
+                else:
+                    result_list.append(match)
+    return result_list

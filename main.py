@@ -79,29 +79,18 @@ def process_office_for_mac():
     office_mac_fqdns = set()
 
     try:
-        md_data = util.get_response_data(md_url).splitlines()
+        md_data = util.get_response_data(md_url)
 
-        in_table = False
+        extracted_tables = util.extract_tables(md_data)
 
-        for line in md_data:
-            stripped_line = line.strip()
+        for table in extracted_tables:
+            table_data = util.md_table_to_dict(table)
 
-            # Start of a new table
-            if stripped_line.startswith("|") and "---" in stripped_line:
-                in_table = True
-                continue
+            table_urls = [x["**URL**"] for x in table_data]
 
-            # End of a table
-            if not stripped_line.startswith("|"):
-                in_table = False
-                continue
+            extracted_fqdn_list = util.extract_network_item(table_urls, util.re_url)
 
-            if in_table:
-                first_column_value = stripped_line.split("|")[1].strip()
-                raw_url = re.findall(r"`(.*?)`", first_column_value)[1]
-                parsed_uri = urlparse(raw_url)
-                fqdn = f"{parsed_uri.netloc}"
-                office_mac_fqdns.add(fqdn)
+            office_mac_fqdns.update(extracted_fqdn_list)
 
     except:
         pass
@@ -165,6 +154,6 @@ def process_azure():
 
 
 if __name__ == "__main__":
-    # process_m365()
-    # process_office_for_mac()
+    process_m365()
+    process_office_for_mac()
     process_azure()
