@@ -1,0 +1,16 @@
+*.cdn.office.net
+*.infra.lync.com
+*.lync.com
+*.microsoft.com
+*.microsoftonline.com
+*.msecnd.net
+*.office.live.com
+*.pipe.aria.microsoft.com
+*.s-microsoft.com
+*.sfbassets.com
+*.skype.com
+*.skypeforbusiness.com
+*.teams.microsoft.com
+*.teams.skype.com
+*broadcast.officeapps.live.com
+*powerpoint.officeapps.live.com

@@ -1,0 +1,9 @@
+msappproxy.net
+outlookmobile.com
+outlookmobile.us
+store.core.windows.net
+aka.ms
+asl.configure.office.com
+mshybridservice.trafficmanager.net
+shcwreleaseprod.blob.core.windows.net
+tds.configure.office.com

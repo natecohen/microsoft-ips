@@ -1,0 +1,16 @@
+autodiscover.outlook.com
+officecdn.microsoft.com
+api.diagnostics.office.com
+apibasic.diagnostics.office.com
+autodiscover-s.outlook.com
+cloudcheckenabler.azurewebsites.net
+login.live.com
+login.microsoftonline.com
+login.windows.net
+o365diagtelemetry.trafficmanager.net
+odc.officeapps.live.com
+offcatedge.azureedge.net
+officeapps.live.com
+outlook.office365.com
+outlookdiagnostics.azureedge.net
+sara.api.support.microsoft.com

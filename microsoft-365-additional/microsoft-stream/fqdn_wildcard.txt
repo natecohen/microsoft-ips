@@ -1,0 +1,9 @@
+*.cloudapp.net
+*.api.microsoftstream.com
+*.notification.api.microsoftstream.com
+amp.azure.net
+api.microsoftstream.com
+az416426.vo.msecnd.net
+s0.assets-yammer.com
+vortex.data.microsoft.com
+web.microsoftstream.com 

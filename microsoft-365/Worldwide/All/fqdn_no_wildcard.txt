@@ -13,6 +13,7 @@ adminwebservice.microsoftonline.com
 ajax.aspnetcdn.com
 aka.ms
 amp.azure.net
+api.flightproxy.skype.com
 api.passwordreset.microsoftonline.com
 apis.live.net
 appex.bing.com
@@ -43,13 +44,13 @@ ccs.login.microsoftonline.com
 cdn.odc.officeapps.live.com
 cdn.uci.officeapps.live.com
 cert.int-x3.letsencrypt.org
-channelservices.microsoft.com
 clientconfig.microsoftonline-p.net
 clientconfig.passport.net
 cloud.microsoft
 companymanager.microsoftonline.com
 compass-ssl.microsoft.com
 compliance.microsoft.com
+config.edge.skype.com
 cortana.ai
 crl.globalsign.com
 crl.globalsign.net
@@ -69,6 +70,8 @@ do.dsp.mp.microsoft.com
 docs.live.net
 docs.microsoft.com
 ecn.dev.virtualearth.net
+ecs.communication.microsoft.com
+edge.microsoft.com
 edge.skype.com
 ekcert.spserv.microsoft.com
 ekop.intel.com
@@ -85,16 +88,14 @@ firstpartyapps.oaspapps.com
 flow.microsoft.com
 ftpm.amd.com
 g.live.com
-gcc.remoteassistanceweb.usgov.communication.azure.us
 geotrust.com
 go.microsoft.com
-go-mpulse.net
+gov.teams.microsoft.us
 graph.microsoft.com
 graph.windows.net
 hip.live.com
 informationprotection.azure.com
 informationprotection.hosting.portal.azure.net
-infra.lync.com
 intunecdnpeasd.azureedge.net
 intunemaape1.eus.attest.azure.net
 intunemaape2.eus2.attest.azure.net
@@ -136,6 +137,7 @@ microsoftstream.com
 microsoftusercontent.com
 mlccdn.blob.core.windows.net
 mlccdnprod.azureedge.net
+monitor.azure.com
 msauth.net
 msauthimages.net
 mscrl.microsoft.com
@@ -181,6 +183,7 @@ onenote.com
 online.office.com
 onmicrosoft.com
 otelrules.azureedge.net
+outlook.cloud.microsoft
 outlook.com
 outlook.office.com
 outlook.office365.com
@@ -204,7 +207,8 @@ provisioningapi.microsoftonline.com
 public-trust.com
 r.office.microsoft.com
 remoteassistanceprodacs.communication.azure.com
-resources.lync.com
+remoteassistanceweb-gcc.usgov.communication.azure.us
+remotehelp.microsoft.com
 s-microsoft.com
 search.production.apac.trafficmanager.net
 search.production.emea.trafficmanager.net
@@ -244,7 +248,9 @@ teams.microsoft.com
 technet.microsoft.com
 telemetryservice.firstpartyapps.oaspapps.com
 time.windows.com
+trouter.communication.microsoft.com
 trouter.skype.com
+trouter.teams.microsoft.com
 tse1.mm.bing.net
 tsfe.trafficshaping.dsp.mp.microsoft.com
 update.microsoft.com
@@ -253,7 +259,6 @@ users.storage.live.com
 verisign.com
 verisign.net
 virtualearth.net
-vortex.data.microsoft.com
 wcpstatic.microsoft.com
 webpubsub.azure.com
 windowsphone.com
