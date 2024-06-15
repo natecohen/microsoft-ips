@@ -2,10 +2,11 @@
 *.dl.delivery.mp.microsoft.com
 *.pipe.aria.microsoft.com
 *.prod.do.dsp.mp.microsoft.com
+*.smartscreen-prod.microsoft.com
 *.update.microsoft.com
 *.windowsupdate.com
 *.wns.windows.com
-*smartscreen-prod.microsoft.com
+*displaycatalog.mp.microsoft.com
 a-ring-fallback.msedge.net
 adl.windows.com
 api.msn.com
@@ -26,7 +27,6 @@ ctldl.windowsupdate.com
 da.xboxservices.com
 data-edge.smartscreen.microsoft.com
 definitionupdates.microsoft.com
-displaycatalog.mp.microsoft.com
 dlassets-ssl.xboxlive.com
 dmd.metaservices.microsoft.com
 dual-s-ring.msedge.net
@@ -35,7 +35,6 @@ ecn-us.dev.virtualearth.net
 ecs.nel.measure.office.net
 edge.microsoft.com
 edgeassetservice.azureedge.net
-emdl.ws.microsoft.com
 evoke-windowsservices-tas.msedge.net
 fd.api.iris.microsoft.com
 fp.msedge.net

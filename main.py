@@ -1,6 +1,8 @@
 import json
 import re
+import urllib.request
 import uuid
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -14,13 +16,29 @@ def process_m365():
     mem_endpoints = ["Worldwide", "USGOVDoD"]
 
     for endpoint in endpoints:
+
+        change_url = f"https://endpoints.office.com/version/{endpoint}?allversions=true&format=rss&clientrequestid={client_request_id}"
+
+        try:
+            change_data_root = ET.fromstring(util.get_response_data(change_url))
+            last_build_date = change_data_root.find(".//lastBuildDate").text
+
+            if last_build_date == last_update_data[f"microsoft-365-{endpoint}"]:
+                print(f"No update: microsoft-365-{endpoint}")
+                continue
+            else:
+                last_update_data[f"microsoft-365-{endpoint}"] = last_build_date
+
+        except:
+            pass
+
         service_areas = {"All": {"urls": set(), "ips": set()}}
 
         json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ClientRequestId={client_request_id}"
         try:
             data = json.loads(util.get_response_data(json_url))
 
-            # For whatever reason, the MEM serviceArea is not included by default
+            # MEM serviceArea is not included by default
             if endpoint in mem_endpoints:
                 try:
                     mem_json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ServiceAreas=MEM&ClientRequestId={client_request_id}"
@@ -47,7 +65,7 @@ def process_m365():
                     service_areas[service_area]["ips"].update(ips)
                     service_areas["All"]["ips"].update(ips)
         except:
-            pass
+            continue
 
         for service_area in service_areas:
             outdir = Path(__file__).parent / "microsoft-365" / endpoint / service_area
@@ -71,6 +89,9 @@ def process_m365():
 
             sorted_ipv4 = util.natsort_ip(util.process_ips(service_ips, return_ipv6=False))
             util.write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
+
+        with open("last_update.json", "w") as f:
+            json.dump(last_update_data, f, indent=2)
 
 
 def process_markdown_common(md_url, url_key, outdir):
@@ -101,25 +122,82 @@ def process_markdown_common(md_url, url_key, outdir):
 
 
 def process_office_for_mac():
-    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/microsoft-365-docs/public/microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md"
+    endpoint = "office-mac"
+    repo = "MicrosoftDocs/microsoft-365-docs"
+    path = "microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md"
 
-    process_markdown_common(md_url, "**URL**", "office-mac")
+    last_commit_date = util.get_last_commit_date(repo, path)
+
+    if last_commit_date == last_update_data[endpoint]:
+        print(f"No update: {endpoint}")
+        return
+    else:
+        last_update_data[endpoint] = last_commit_date
+
+    md_url = f"https://raw.githubusercontent.com/{repo}/public/{path}"
+
+    process_markdown_common(md_url, "Destination", endpoint)
+
+    with open("last_update.json", "w") as f:
+        json.dump(last_update_data, f, indent=2)
 
 
 def process_windows_11():
-    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/windows-itpro-docs/public/windows/privacy/manage-windows-11-endpoints.md"
+    endpoint = "windows-11"
+    repo = "MicrosoftDocs/windows-itpro-docs"
+    path = "windows/privacy/manage-windows-11-endpoints.md"
 
-    process_markdown_common(md_url, "Destination", "windows-11")
+    last_commit_date = util.get_last_commit_date(repo, path)
+
+    if last_commit_date == last_update_data[endpoint]:
+        print(f"No update: {endpoint}")
+        return
+    else:
+        last_update_data[endpoint] = last_commit_date
+
+    md_url = f"https://raw.githubusercontent.com/{repo}/public/{path}"
+
+    process_markdown_common(md_url, "Destination", endpoint)
+
+    with open("last_update.json", "w") as f:
+        json.dump(last_update_data, f, indent=2)
 
 
 def process_entra_connect():
-    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/identity/hybrid/connect/tshoot-connect-connectivity.md"
+    endpoint = "entra-connect"
+    repo = "MicrosoftDocs/entra-docs"
+    path = "docs/identity/hybrid/connect/tshoot-connect-connectivity.md"
 
-    process_markdown_common(md_url, "URL", "entra-connect/Worldwide")
+    last_commit_date = util.get_last_commit_date(repo, path)
+
+    if last_commit_date == last_update_data[endpoint]:
+        print(f"No update: {endpoint}")
+        return
+    else:
+        last_update_data[endpoint] = last_commit_date
+
+    md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
+
+    process_markdown_common(md_url, "Destination", f"{endpoint}/Worldwide")
+
+    with open("last_update.json", "w") as f:
+        json.dump(last_update_data, f, indent=2)
 
 
 def process_entra_connect_health():
-    md_url = "https://raw.githubusercontent.com/MicrosoftDocs/entra-docs/main/docs/identity/hybrid/connect/how-to-connect-health-agent-install.md"
+    endpoint = "entra-connect-health"
+    repo = "MicrosoftDocs/entra-docs"
+    path = "docs/identity/hybrid/connect/how-to-connect-health-agent-install.md"
+
+    last_commit_date = util.get_last_commit_date(repo, path)
+
+    if last_commit_date == last_update_data[endpoint]:
+        print(f"No update: {endpoint}")
+        return
+    else:
+        last_update_data[endpoint] = last_commit_date
+
+    md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
 
     health_fqdns = {"Public": set(), "AzureGovernment": set()}
 
@@ -160,12 +238,27 @@ def process_entra_connect_health():
         sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=util.natsort_fqdn)
         util.write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
 
+    with open("last_update.json", "w") as f:
+        json.dump(last_update_data, f, indent=2)
+
 
 def process_azure():
     endpoints = ["Public", "AzureGermany", "AzureGovernment", "China"]
 
     for endpoint in endpoints:
         json_url = f"https://azureipranges.azurewebsites.net/Data/{endpoint}.json"
+
+        head_request = urllib.request.Request(json_url, method="HEAD")
+        head_request.add_header("If-Modified-Since", "Thu, 01 Jan 1970 00:00:00 GMT")
+        response = urllib.request.urlopen(head_request)
+
+        last_modified = response.getheader("last-modified")
+
+        if last_modified == last_update_data[f"azure-{endpoint}"]:
+            print(f"No update: azure-{endpoint}")
+            continue
+        else:
+            last_update_data[f"azure-{endpoint}"] = last_modified
 
         try:
             data = json.loads(util.get_response_data(json_url))
@@ -204,11 +297,19 @@ def process_azure():
                     sorted_ipv4 = util.natsort_ip(util.process_ips(address_prefixes, return_ipv6=False))
                     util.write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
 
+            with open("last_update.json", "w") as f:
+                json.dump(last_update_data, f, indent=2)
+
         except:
-            pass
+            continue
 
 
 if __name__ == "__main__":
+    global last_update_data
+
+    with open("last_update.json", "r") as f:
+        last_update_data = json.load(f)
+
     process_m365()
     process_office_for_mac()
     process_windows_11()

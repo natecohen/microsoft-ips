@@ -1,7 +1,13 @@
 import ipaddress
+import json
 import re
 import urllib.error
 import urllib.request
+
+# Importable variables
+re_url = re.compile(r"((?:<.*?>\.)?(?:(?:\*\.?)?[A-Za-z0-9\-]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
+re_ipv6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
+re_ipv4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
 
 
 def write_list(directory, filename, items):
@@ -102,11 +108,6 @@ def md_table_to_dict(table_string):
     return ret
 
 
-re_url = re.compile(r"((?:<.*?>\.)?(?:(?:\*\.?)?[A-Za-z0-9\-]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
-re_ipv6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
-re_ipv4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
-
-
 def extract_network_item(source_list, pattern):
     result_list = []
     for item in source_list:
@@ -127,3 +128,10 @@ def extract_network_item(source_list, pattern):
 
                     result_list.append(match.lower())
     return result_list
+
+
+def get_last_commit_date(repo, path):
+    url = f"https://api.github.com/repos/{repo}/commits?path={path}"
+    data = json.loads(get_response_data(url))
+
+    return data[0]["commit"]["committer"]["date"]
