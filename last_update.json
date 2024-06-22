@@ -1,8 +1,8 @@
 {
-  "azure-Public": "Fri, 14 Jun 2024 14:35:59 GMT",
-  "azure-AzureGermany": "Fri, 14 Jun 2024 14:36:00 GMT",
-  "azure-AzureGovernment": "Fri, 14 Jun 2024 14:35:59 GMT",
-  "azure-China": "Fri, 14 Jun 2024 14:36:00 GMT",
+  "azure-Public": "Fri, 21 Jun 2024 17:35:37 GMT",
+  "azure-AzureGermany": "Fri, 21 Jun 2024 17:35:38 GMT",
+  "azure-AzureGovernment": "Fri, 21 Jun 2024 17:35:37 GMT",
+  "azure-China": "Fri, 21 Jun 2024 17:35:38 GMT",
   "microsoft-365-Worldwide": "Thu, 30 May 2024 02:06:53 Z",
   "microsoft-365-China": "Fri, 29 Mar 2024 06:23:48 Z",
   "microsoft-365-USGOVDoD": "Thu, 30 May 2024 02:06:53 Z",
@@ -10,5 +10,5 @@
   "office-mac": "2024-05-02T22:27:07Z",
   "windows-11": "2024-06-13T19:55:22Z",
   "entra-connect": "2024-02-12T20:45:10Z",
-  "entra-connect-health": "2024-05-13T20:18:13Z"
+  "entra-connect-health": "2024-06-18T19:52:05Z"
 }

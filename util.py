@@ -4,10 +4,10 @@ import re
 import urllib.error
 import urllib.request
 
-# Importable variables
-re_url = re.compile(r"((?:<.*?>\.)?(?:(?:\*\.?)?[A-Za-z0-9\-]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
-re_ipv6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
-re_ipv4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
+# Constants
+RE_URL = re.compile(r"((?:<.*?>\.)?(?:(?:\*\.?)?[A-Za-z0-9\-]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
+RE_IPV6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
+RE_IPV4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
 
 
 def write_list(directory, filename, items):
@@ -117,7 +117,7 @@ def extract_network_item(source_list, pattern):
             # Extract potential matches
             matches = re.findall(pattern, line)
             for match in matches:
-                if pattern in (re_ipv4, re_ipv6):
+                if pattern in (RE_IPV4, RE_IPV6):
                     # Normalize the IPs so single IP gets /32 or /128 appended
                     result_list.append(str(ipaddress.ip_network(match)))
                 else:
