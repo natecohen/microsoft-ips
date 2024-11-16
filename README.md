@@ -33,11 +33,6 @@ Some may be split further by service, and include an "All" subfolder with combin
 
 You may find Windows attempt direct IP connections for updates. Those that are a part of [Microsoft Connected Cache for ISPs](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/microsoft-connected-cache-for-isps-microsoft-s-distributed-cdn/ba-p/3891604) are not published.
 
-## Todo
-
-- Automation using GitHub Actions
-- Addition of more services
-
 ## Related Projects
 
 - https://github.com/blrchen/azure-ip-lookup

@@ -47,7 +47,17 @@ class MicrosoftUpdateProcessor:
         self.original_last_update_data = self.last_update_data.copy()
 
     def save_updates(self):
-        if self.last_update_data != self.original_last_update_data:
+        updated_categories = [
+            key for key in self.last_update_data
+            if self.last_update_data[key] != self.original_last_update_data.get(key)
+        ]
+
+        if updated_categories:
+            # Write updated categories to a file for the GitHub Action
+            with open("updated_categories.txt", "w") as f:
+                f.write("\n".join(updated_categories))
+
+            # Save the updated JSON file
             with open(self.update_file, "w") as f:
                 json.dump(self.last_update_data, f, indent=2)
 
@@ -76,7 +86,6 @@ class MicrosoftUpdateProcessor:
                 region_service_list = {}
 
                 for item in data["values"]:
-
                     # Skip generic AzureCloud
                     if item["id"].startswith("AzureCloud"):
                         continue
@@ -117,7 +126,6 @@ class MicrosoftUpdateProcessor:
         mem_endpoints = ["Worldwide", "USGOVDoD"]
 
         for endpoint in endpoints:
-
             change_url = f"https://endpoints.office.com/version/{endpoint}?allversions=true&format=rss&clientrequestid={client_request_id}"
 
             try:
@@ -290,7 +298,6 @@ class MicrosoftUpdateProcessor:
             pass
 
         for endpoint, urls in health_fqdns.items():
-
             outdir = Path(__file__).parent / "entra-connect-health" / endpoint
             outdir.mkdir(parents=True, exist_ok=True)
 

@@ -1,0 +1,41 @@
+name: Daily Update
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  update_and_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Run the update script
+      - name: Run update script
+        run: python script.py
+
+      # Check if there are any updates
+      - name: Check for updates
+        id: check_updates
+        run: |
+          if [ -f updated_categories.txt ]; then
+            echo "updates_found=true" >> $GITHUB_ENV
+            UPDATED_CATEGORIES=$(cat updated_categories.txt | tr '\n' ', ' | sed 's/, $//')
+            echo "updated_categories=${UPDATED_CATEGORIES}" >> $GITHUB_ENV
+          else
+            echo "updates_found=false" >> $GITHUB_ENV
+
+      # Commit and push changes if updates are found
+      - name: Commit and push changes
+        if: env.updates_found == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          COMMIT_MESSAGE="$(date +'%Y-%m-%d') Updated - ${UPDATED_CATEGORIES}"
+          git commit -m "${COMMIT_MESSAGE}"
+          git push
