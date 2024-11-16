@@ -10,15 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Run the update script
       - name: Run update script
-        run: python script.py
+        run: python main.py
 
-      # Check if there are any updates
       - name: Check for updates
         id: check_updates
         run: |
@@ -29,7 +26,6 @@ jobs:
           else
             echo "updates_found=false" >> $GITHUB_ENV
 
-      # Commit and push changes if updates are found
       - name: Commit and push changes
         if: env.updates_found == 'true'
         run: |
