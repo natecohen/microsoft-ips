@@ -24,9 +24,12 @@ jobs:
         run: |
           if [ -f updated_categories.txt ]; then
             echo "updates_found=true" >> $GITHUB_ENV
+            CURRENT_DATE=$(date +'%Y-%m-%d')
             UPDATED_CATEGORIES=$(cat updated_categories.txt | tr '\n' ', ' | sed 's/, $//')
+            COMMIT_MESSAGE="${CURRENT_DATE} Updated ${UPDATED_CATEGORIES}"
+            echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_ENV
             rm updated_categories.txt
-            echo "updated_categories=${UPDATED_CATEGORIES}" >> $GITHUB_ENV
+            git add .
           else
             echo "updates_found=false" >> $GITHUB_ENV
           fi
@@ -35,7 +38,7 @@ jobs:
         if: env.updates_found == 'true'
         uses: qoomon/actions--create-commit@v1
         with:
-          message: $(date +'%Y-%m-%d') Updated ${{ env.updated_categories }}
+          message: ${{ env.commit_message }}
           skip-empty: true
           token: ${{ secrets.ACTION_TOKEN }}
 
