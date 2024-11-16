@@ -25,17 +25,20 @@ jobs:
           if [ -f updated_categories.txt ]; then
             echo "updates_found=true" >> $GITHUB_ENV
             UPDATED_CATEGORIES=$(cat updated_categories.txt | tr '\n' ', ' | sed 's/, $//')
+            rm updated_categories.txt
             echo "updated_categories=${UPDATED_CATEGORIES}" >> $GITHUB_ENV
           else
             echo "updates_found=false" >> $GITHUB_ENV
           fi
 
-      - name: Commit and push changes
+      - name: Commit
         if: env.updates_found == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          COMMIT_MESSAGE="$(date +'%Y-%m-%d') Updated ${UPDATED_CATEGORIES}"
-          git commit -m "${COMMIT_MESSAGE}"
-          git push
+        uses: qoomon/actions--create-commit@v1
+        with:
+          message: $(date +'%Y-%m-%d') Updated ${{ env.updated_categories }}
+          skip-empty: true
+          token: ${{ secrets.ACTION_TOKEN }}
+
+      - name: Push
+        if: ${{ steps.commit.outputs.commit }}
+        run: git push
