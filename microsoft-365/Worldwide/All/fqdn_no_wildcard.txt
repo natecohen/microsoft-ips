@@ -31,10 +31,8 @@ auth.microsoft.com
 autologon.microsoftazuread-sso.com
 ax.itunes.apple.com.edgesuite.net
 azure-apim.net
-azureedge.net
 azurerms.com
 becws.microsoftonline.com
-blob.core.windows.net
 c.bing.com
 c.bing.net
 c.live.com
@@ -128,12 +126,10 @@ loginex.microsoftonline.com
 lync.com
 mail.protection.outlook.com
 manage.microsoft.com
-media.azure.net
 mem.gfx.ms
 microsoft.com
 microsoftonline.com
 microsoftonline-p.com
-microsoftstream.com
 microsoftusercontent.com
 mlccdn.blob.core.windows.net
 mlccdnprod.azureedge.net
@@ -155,7 +151,6 @@ naprodimedatapri.azureedge.net
 naprodimedatasec.azureedge.net
 nexus.microsoftonline-p.com
 notify.windows.com
-nps.onyx.azure.net
 o15.officeredir.microsoft.com
 o365weve.com
 ocos-office365-s2s.msedge.net
@@ -205,9 +200,10 @@ protection.office.com
 protection.outlook.com
 provisioningapi.microsoftonline.com
 public-trust.com
+purview.microsoft.com
 r.office.microsoft.com
 remoteassistanceprodacs.communication.azure.com
-remoteassistanceweb-gcc.usgov.communication.azure.us
+remoteassistanceweb.usgov.communication.azure.us
 remotehelp.microsoft.com
 s-microsoft.com
 search.production.apac.trafficmanager.net
@@ -225,6 +221,7 @@ smtp.office365.com
 spoprod-a.akamaihd.net
 ssw.live.com
 staffhub.ms
+staffhubweb.azureedge.net
 static.microsoft
 storage.live.com
 streaming.mediaservices.windows.net
@@ -244,6 +241,7 @@ swdin01-mscdn.azureedge.net
 swdin02-mscdn.azureedge.net
 symcb.com
 symcd.com
+teams.cloud.microsoft
 teams.microsoft.com
 technet.microsoft.com
 telemetryservice.firstpartyapps.oaspapps.com
@@ -272,8 +270,6 @@ www.bing.com
 www.digicert.com
 www.microsoft.com
 www.microsoft365.com
-www.msftconnecttest.com
-www.msftncsi.com
 www.onedrive.com
 www.outlook.com
 www.sway.com

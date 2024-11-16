@@ -28,7 +28,6 @@ jobs:
             UPDATED_CATEGORIES=$(cat updated_categories.txt | tr '\n' ', ' | sed 's/, $//')
             COMMIT_MESSAGE="${CURRENT_DATE} Updated ${UPDATED_CATEGORIES}"
             echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_ENV
-            rm updated_categories.txt
             git add .
           else
             echo "updates_found=false" >> $GITHUB_ENV

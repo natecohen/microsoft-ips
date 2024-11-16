@@ -22,10 +22,8 @@ auth.gfx.ms
 auth.microsoft.com
 autologon.microsoftazuread-sso.com
 azure-apim.net
-azureedge.net
 azurerms.com
 becws.microsoftonline.com
-blob.core.windows.net
 c.bing.com
 c.bing.net
 c.live.com
@@ -70,7 +68,6 @@ hip.live.com
 informationprotection.azure.com
 informationprotection.hosting.portal.azure.net
 isrg.trustid.ocsp.identrust.com
-keydelivery.mediaservices.windows.net
 login.live.com
 login.microsoft.com
 login.microsoftonline.com
@@ -80,12 +77,10 @@ login.windows-ppe.net
 login-us.microsoftonline.com
 logincert.microsoftonline.com
 loginex.microsoftonline.com
-media.azure.net
 mem.gfx.ms
 microsoft.com
 microsoftonline.com
 microsoftonline-p.com
-microsoftstream.com
 microsoftusercontent.com
 msauth.net
 msauthimages.net
@@ -98,7 +93,6 @@ msftidentity.com
 msidentity.com
 msocdn.com
 nexus.microsoftonline-p.com
-nps.onyx.azure.net
 o15.officeredir.microsoft.com
 o365weve.com
 ocos-office365-s2s.msedge.net
@@ -138,6 +132,7 @@ prod.msocdn.com
 protection.office.com
 provisioningapi.microsoftonline.com
 public-trust.com
+purview.microsoft.com
 r.office.microsoft.com
 secure.globalsign.com
 security.microsoft.com
@@ -145,8 +140,8 @@ sharepointonline.com
 shellprod.msocdn.com
 signup.live.com
 staffhub.ms
+staffhubweb.azureedge.net
 static.microsoft
-streaming.mediaservices.windows.net
 support.microsoft.com
 sway.com
 symcb.com

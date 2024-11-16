@@ -59,6 +59,7 @@ osi.office365.us
 outlook.office365.us
 prod.msocdn.us
 protection.office365.us
+purview.microsoft.us
 r.office.microsoft.com
 scc.office365.us
 secure.aadcdn.microsoftonline-p.com

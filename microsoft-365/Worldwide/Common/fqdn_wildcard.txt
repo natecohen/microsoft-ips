@@ -7,11 +7,8 @@
 *.assets-yammer.com
 *.auth.microsoft.com
 *.azure-apim.net
-*.azureedge.net
 *.azurerms.com
-*.blob.core.windows.net
 *.cloud.microsoft
-*.compliance.microsoft.com
 *.cortana.ai
 *.entrust.net
 *.events.data.microsoft.com
@@ -19,12 +16,9 @@
 *.geotrust.com
 *.hip.live.com
 *.informationprotection.azure.com
-*.keydelivery.mediaservices.windows.net
-*.media.azure.net
 *.microsoft.com
 *.microsoftonline.com
 *.microsoftonline-p.com
-*.microsoftstream.com
 *.microsoftusercontent.com
 *.msauth.net
 *.msauthimages.net
@@ -53,7 +47,6 @@
 *.security.microsoft.com
 *.sharepointonline.com
 *.static.microsoft
-*.streaming.mediaservices.windows.net
 *.symcb.com
 *.symcd.com
 *.usercontent.microsoft
@@ -128,7 +121,6 @@ mem.gfx.ms
 mscrl.microsoft.com
 msdn.microsoft.com
 nexus.microsoftonline-p.com
-nps.onyx.azure.net
 o15.officeredir.microsoft.com
 ocos-office365-s2s.msedge.net
 ocsp.digicert.com
@@ -154,12 +146,14 @@ prod.firstpartyapps.oaspapps.com.akadns.net
 prod.msocdn.com
 protection.office.com
 provisioningapi.microsoftonline.com
+purview.microsoft.com
 r.office.microsoft.com
 secure.globalsign.com
 security.microsoft.com
 shellprod.msocdn.com
 signup.live.com
 staffhub.ms
+staffhubweb.azureedge.net
 support.microsoft.com
 sway.com
 technet.microsoft.com

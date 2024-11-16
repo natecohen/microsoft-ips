@@ -49,6 +49,7 @@ osi.apps.mil
 pf.events.data.microsoft.com
 pf.pipe.aria.microsoft.com
 portal.apps.mil
+purview.apps.mil
 r.office.microsoft.com
 reports.apps.mil
 scc.protection.apps.mil

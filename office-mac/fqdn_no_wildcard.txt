@@ -34,6 +34,7 @@ ocws.officeapps.live.com
 odc.officeapps.live.com
 officecdn.microsoft.com
 officecdn-microsoft-com.akamaized.net
+officecdnmac.microsoft.com
 officeci.azurewebsites.net
 officeci-mauservice.azurewebsites.net
 officeclient.microsoft.com

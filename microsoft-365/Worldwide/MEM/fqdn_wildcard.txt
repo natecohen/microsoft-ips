@@ -20,6 +20,7 @@
 *.windowsupdate.com
 *.wns.windows.com
 5-courier.push.apple.com
+adl.windows.com
 api.flightproxy.skype.com
 approdimedatahotfix.azureedge.net
 approdimedatapri.azureedge.net
@@ -63,7 +64,7 @@ ocsp.apple.com
 phobos.apple.com
 phobos.itunes-apple.com.akadns.net
 remoteassistanceprodacs.communication.azure.com
-remoteassistanceweb-gcc.usgov.communication.azure.us
+remoteassistanceweb.usgov.communication.azure.us
 remotehelp.microsoft.com
 swda01-mscdn.azureedge.net
 swda02-mscdn.azureedge.net
@@ -79,5 +80,3 @@ time.windows.com
 tsfe.trafficshaping.dsp.mp.microsoft.com
 wcpstatic.microsoft.com
 windowsphone.com
-www.msftconnecttest.com
-www.msftncsi.com

@@ -8,5 +8,6 @@ mlccdnprod.azureedge.net
 secure.skypeassets.com
 skype.com
 streaming.mediaservices.windows.net
+teams.cloud.microsoft
 teams.microsoft.com
 users.storage.live.com

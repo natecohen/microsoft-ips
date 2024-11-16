@@ -1,7 +1,6 @@
 *.aadrm.us
 *.auth.microsoft.us
 *.cdn.office.net
-*.compliance.microsoft.us
 *.gov.online.office365.us
 *.gov.us.microsoftonline.com
 *.informationprotection.azure.us
@@ -50,6 +49,7 @@ officepreviewredir.microsoft.com
 officeredir.microsoft.com
 ols.officeapps.live.com
 prod.msocdn.us
+purview.microsoft.us
 r.office.microsoft.com
 scc.office365.us
 secure.aadcdn.microsoftonline-p.com

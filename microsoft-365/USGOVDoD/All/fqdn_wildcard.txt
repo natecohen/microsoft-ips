@@ -1,7 +1,6 @@
 *.aadrm.us
 *.auth.microsoft.us
 *.cdn.office.net
-*.compliance.apps.mil
 *.dod.online.office365.us
 *.dod.teams.microsoft.us
 *.dps.mil
@@ -88,6 +87,7 @@ outlook-dod.office365.us
 pf.events.data.microsoft.com
 pf.pipe.aria.microsoft.com
 portal.apps.mil
+purview.apps.mil
 qrybkr-cses01-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
 qrybkr-cses02-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
 r.office.microsoft.com
