@@ -1,4 +1,5 @@
 * text=auto
-
+*.yml text eol=lf
+*.yaml text eol=lf
 *.md diff=markdown
 *.py diff=python
