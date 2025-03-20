@@ -7,6 +7,10 @@ approdimedatasec.azureedge.net
 ax.itunes.apple.com.edgesuite.net
 clientconfig.passport.net
 config.edge.skype.com
+contentauthassetscdn-prod.azureedge.net
+contentauthassetscdn-prodeur.azureedge.net
+contentauthrafcontentcdn-prod.azureedge.net
+contentauthrafcontentcdn-prodeur.azureedge.net
 delivery.mp.microsoft.com
 dl.delivery.mp.microsoft.com
 do.dsp.mp.microsoft.com
@@ -19,6 +23,7 @@ emdl.ws.microsoft.com
 euprodimedatahotfix.azureedge.net
 euprodimedatapri.azureedge.net
 euprodimedatasec.azureedge.net
+fd.api.orgmsg.microsoft.com
 ftpm.amd.com
 gov.teams.microsoft.us
 intunecdnpeasd.azureedge.net
@@ -51,8 +56,10 @@ phobos.apple.com
 phobos.itunes-apple.com.akadns.net
 prod.do.dsp.mp.microsoft.com
 remoteassistanceprodacs.communication.azure.com
+remoteassistanceprodacseu.communication.azure.com
 remoteassistanceweb.usgov.communication.azure.us
 remotehelp.microsoft.com
+ris.prod.api.personalization.ideas.microsoft.com
 s-microsoft.com
 support.services.microsoft.com
 swda01-mscdn.azureedge.net

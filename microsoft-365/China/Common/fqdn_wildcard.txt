@@ -11,6 +11,7 @@
 *.msauthimages.cn
 *.msftauth.cn
 *.msftauthimages.cn
+*.officewebapps.cn
 *.onmschina.cn
 *.partner.microsoftonline.cn
 *.partner.microsoftonline.net.cn

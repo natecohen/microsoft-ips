@@ -1,3 +1,4 @@
+*.api.cdp.microsoft.com
 *.delivery.mp.microsoft.com
 *.dl.delivery.mp.microsoft.com
 *.pipe.aria.microsoft.com

@@ -1,11 +1,10 @@
 adl.windows.com
 aka.ms
 compass-ssl.microsoft.com
+join.secure.skypeassets.com
 keydelivery.mediaservices.windows.net
 lync.com
-mlccdn.blob.core.windows.net
 mlccdnprod.azureedge.net
-secure.skypeassets.com
 skype.com
 streaming.mediaservices.windows.net
 teams.cloud.microsoft

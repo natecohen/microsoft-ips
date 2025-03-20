@@ -1,7 +1,7 @@
 aadrm.us
 activation.sls.microsoft.com
 activity.windows.com
-admin.exchange.apps.mil
+apps.mil
 attachments-dod.office365-net.us
 auth.microsoft.us
 autodiscover-s-dod.office365.us
@@ -12,7 +12,6 @@ clientconfig.microsoftonline-p.net
 cmgwpesvcust.usgovtexas.cloudapp.usgovcloudapi.net
 cmgwpesvcusv.usgovvirginia.cloudapp.usgovcloudapi.net
 compliance.apps.mil
-config.apps.mil
 crl.microsoft.com
 dod.activity.windows.us
 dod.loki.office365.us
@@ -58,7 +57,6 @@ nexus.microsoftonline-p.com
 ocsa.officeapps.live.com
 ocsredir.officeapps.live.com
 ocws.officeapps.live.com
-od.apps.mil
 odc.officeapps.live.com
 office15client.microsoft.com
 office365.us
@@ -70,7 +68,6 @@ officeredir.microsoft.com
 ols.officeapps.live.com
 oneclient.sfx.ms
 online.dod.skypeforbusiness.us
-osi.apps.mil
 outlook-dod.office365.us
 pf.events.data.microsoft.com
 pf.pipe.aria.microsoft.com

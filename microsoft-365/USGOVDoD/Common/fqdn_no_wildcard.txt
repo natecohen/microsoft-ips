@@ -1,12 +1,12 @@
 aadrm.us
 activation.sls.microsoft.com
 activity.windows.com
+apps.mil
 auth.microsoft.us
 cdn.odc.officeapps.live.com
 cdn.office.net
 clientconfig.microsoftonline-p.net
 compliance.apps.mil
-config.apps.mil
 crl.microsoft.com
 dod.activity.windows.us
 dod.loki.office365.us
@@ -45,7 +45,6 @@ officeclient.microsoft.com
 officepreviewredir.microsoft.com
 officeredir.microsoft.com
 ols.officeapps.live.com
-osi.apps.mil
 pf.events.data.microsoft.com
 pf.pipe.aria.microsoft.com
 portal.apps.mil

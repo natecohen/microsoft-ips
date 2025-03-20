@@ -1,11 +1,9 @@
 *.dps.mil
-*.od.apps.mil
 *.sharepoint-mil.us
 *.svc.ms
 *.wns.windows.com
 az741266.vo.msecnd.net
 g.live.com
-od.apps.mil
 oneclient.sfx.ms
 spoprod-a.akamaihd.net
 static.sharepointonline.com

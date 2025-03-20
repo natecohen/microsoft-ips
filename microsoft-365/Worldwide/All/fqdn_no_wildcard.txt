@@ -21,7 +21,6 @@ appex-rf.msn.com
 approdimedatahotfix.azureedge.net
 approdimedatapri.azureedge.net
 approdimedatasec.azureedge.net
-apps.identrust.com
 appsforoffice.microsoft.com
 aria.microsoft.com
 assets.onestore.ms
@@ -49,6 +48,10 @@ companymanager.microsoftonline.com
 compass-ssl.microsoft.com
 compliance.microsoft.com
 config.edge.skype.com
+contentauthassetscdn-prod.azureedge.net
+contentauthassetscdn-prodeur.azureedge.net
+contentauthrafcontentcdn-prod.azureedge.net
+contentauthrafcontentcdn-prodeur.azureedge.net
 cortana.ai
 crl.globalsign.com
 crl.globalsign.net
@@ -82,7 +85,7 @@ euprodimedatasec.azureedge.net
 eus-www.sway-cdn.com
 eus-www.sway-extensions.com
 events.data.microsoft.com
-firstpartyapps.oaspapps.com
+fd.api.orgmsg.microsoft.com
 flow.microsoft.com
 ftpm.amd.com
 g.live.com
@@ -112,6 +115,7 @@ intunemaape18.jpe.attest.azure.net
 intunemaape19.jpe.attest.azure.net
 isrg.trustid.ocsp.identrust.com
 itunes.apple.com
+join.secure.skypeassets.com
 keydelivery.mediaservices.windows.net
 lgmsapeweu.blob.core.windows.net
 login.live.com
@@ -131,7 +135,6 @@ microsoft.com
 microsoftonline.com
 microsoftonline-p.com
 microsoftusercontent.com
-mlccdn.blob.core.windows.net
 mlccdnprod.azureedge.net
 monitor.azure.com
 msauth.net
@@ -175,6 +178,7 @@ officespeech.platform.bing.com
 omniroot.com
 oneclient.sfx.ms
 onenote.com
+oneocsp.microsoft.com
 online.office.com
 onmicrosoft.com
 otelrules.azureedge.net
@@ -189,12 +193,10 @@ phobos.apple.com
 phobos.itunes-apple.com.akadns.net
 phonefactor.net
 platform.linkedin.com
-policykeyservice.dc.ad.msft.net
 portal.cloudappsecurity.com
 powerapps.com
 powerautomate.com
 prod.do.dsp.mp.microsoft.com
-prod.firstpartyapps.oaspapps.com.akadns.net
 prod.msocdn.com
 protection.office.com
 protection.outlook.com
@@ -203,14 +205,15 @@ public-trust.com
 purview.microsoft.com
 r.office.microsoft.com
 remoteassistanceprodacs.communication.azure.com
+remoteassistanceprodacseu.communication.azure.com
 remoteassistanceweb.usgov.communication.azure.us
 remotehelp.microsoft.com
+ris.prod.api.personalization.ideas.microsoft.com
 s-microsoft.com
 search.production.apac.trafficmanager.net
 search.production.emea.trafficmanager.net
 search.production.us.trafficmanager.net
 secure.globalsign.com
-secure.skypeassets.com
 security.microsoft.com
 sharepoint.com
 sharepointonline.com
@@ -244,7 +247,6 @@ symcd.com
 teams.cloud.microsoft
 teams.microsoft.com
 technet.microsoft.com
-telemetryservice.firstpartyapps.oaspapps.com
 time.windows.com
 trouter.communication.microsoft.com
 trouter.skype.com
@@ -262,7 +264,6 @@ webpubsub.azure.com
 windowsphone.com
 windowsupdate.com
 wns.windows.com
-wus-firstpartyapps.oaspapps.com
 wus-www.sway-cdn.com
 wus-www.sway-extensions.com
 www.acompli.com

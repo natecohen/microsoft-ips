@@ -67,7 +67,6 @@ ajax.aspnetcdn.com
 amp.azure.net
 api.passwordreset.microsoftonline.com
 apis.live.net
-apps.identrust.com
 appsforoffice.microsoft.com
 assets.onestore.ms
 auth.gfx.ms
@@ -102,7 +101,6 @@ ecn.dev.virtualearth.net
 enterpriseregistration.windows.net
 eus-www.sway-cdn.com
 eus-www.sway-extensions.com
-firstpartyapps.oaspapps.com
 go.microsoft.com
 graph.microsoft.com
 graph.windows.net
@@ -137,12 +135,11 @@ officeclient.microsoft.com
 officepreviewredir.microsoft.com
 officeredir.microsoft.com
 officespeech.platform.bing.com
+oneocsp.microsoft.com
 otelrules.azureedge.net
 partnerservices.getmicrosoftkey.com
 passwordreset.microsoftonline.com
 platform.linkedin.com
-policykeyservice.dc.ad.msft.net
-prod.firstpartyapps.oaspapps.com.akadns.net
 prod.msocdn.com
 protection.office.com
 provisioningapi.microsoftonline.com
@@ -157,9 +154,7 @@ staffhubweb.azureedge.net
 support.microsoft.com
 sway.com
 technet.microsoft.com
-telemetryservice.firstpartyapps.oaspapps.com
 tse1.mm.bing.net
-wus-firstpartyapps.oaspapps.com
 wus-www.sway-cdn.com
 wus-www.sway-extensions.com
 www.acompli.com

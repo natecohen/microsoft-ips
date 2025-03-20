@@ -1,5 +1,6 @@
 a-ring-fallback.msedge.net
 adl.windows.com
+api.cdp.microsoft.com
 api.msn.com
 arc.msn.com
 assets.msn.com

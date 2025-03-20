@@ -1,4 +1,5 @@
 *.aadrm.us
+*.apps.mil
 *.auth.microsoft.us
 *.cdn.office.net
 *.dod.online.office365.us
@@ -9,14 +10,12 @@
 *.msftauth.net
 *.msftauthimages.us
 *.office365.us
-*.osi.apps.mil
 *.security.apps.mil
 activation.sls.microsoft.com
 activity.windows.com
 cdn.odc.officeapps.live.com
 clientconfig.microsoftonline-p.net
 compliance.apps.mil
-config.apps.mil
 crl.microsoft.com
 dod.activity.windows.us
 dod.loki.office365.us
