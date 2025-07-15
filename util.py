@@ -1,5 +1,6 @@
 import ipaddress
 import json
+import os
 import re
 import urllib.error
 import urllib.request
@@ -36,9 +37,10 @@ def natsort_ip(ip_list):
     return sorted(ip_list, key=ip_sort_key)
 
 
-def get_response_data(url):
+def get_response_data(url, headers=None):
+    req = urllib.request.Request(url, headers=headers or {})
     try:
-        with urllib.request.urlopen(url) as response:
+        with urllib.request.urlopen(req) as response:
             return response.read().decode()
     except urllib.error.URLError as e:
         raise Exception(f"Error: {e} while fetching data from {url}")
@@ -117,6 +119,12 @@ def extract_network_item(source_list, pattern):
 
 def get_last_commit_date(repo, path):
     url = f"https://api.github.com/repos/{repo}/commits?path={path}"
-    data = json.loads(get_response_data(url))
+    headers = {}
+
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"token {token}"
+
+    data = json.loads(get_response_data(url, headers))
 
     return data[0]["commit"]["committer"]["date"]
