@@ -18,6 +18,10 @@
 *.security.microsoft.us
 *.sharepoint.us
 *.svc.ms
+*.usgovcloud.microsoft
+*.usgovcloud-mx.microsoft
+*.usgovcloud-static.microsoft
+*.usgovcloud-usercontent.microsoft
 *.wns.windows.com
 activation.sls.microsoft.com
 activity.windows.com

@@ -59,16 +59,13 @@ crl.identrust.com
 crl.microsoft.com
 crl3.digicert.com
 crl4.digicert.com
-d.docs.live.net
 dc.services.visualstudio.com
 defender.microsoft.com
 delivery.mp.microsoft.com
 device.login.microsoftonline.com
 dgps.support.microsoft.com
-dl.delivery.mp.microsoft.com
 dn.onenote.net
 do.dsp.mp.microsoft.com
-docs.live.net
 docs.microsoft.com
 ecn.dev.virtualearth.net
 ecs.communication.microsoft.com
@@ -76,7 +73,6 @@ edge.microsoft.com
 edge.skype.com
 ekcert.spserv.microsoft.com
 ekop.intel.com
-emdl.ws.microsoft.com
 enterpriseregistration.windows.net
 entrust.net
 euprodimedatahotfix.azureedge.net
@@ -196,7 +192,6 @@ platform.linkedin.com
 portal.cloudappsecurity.com
 powerapps.com
 powerautomate.com
-prod.do.dsp.mp.microsoft.com
 prod.msocdn.com
 protection.office.com
 protection.outlook.com
@@ -222,9 +217,6 @@ signup.live.com
 skype.com
 smtp.office365.com
 spoprod-a.akamaihd.net
-ssw.live.com
-staffhub.ms
-staffhubweb.azureedge.net
 static.microsoft
 storage.live.com
 streaming.mediaservices.windows.net
@@ -255,7 +247,6 @@ tse1.mm.bing.net
 tsfe.trafficshaping.dsp.mp.microsoft.com
 update.microsoft.com
 usercontent.microsoft
-users.storage.live.com
 verisign.com
 verisign.net
 virtualearth.net

@@ -4,17 +4,13 @@ import re
 import urllib.error
 import urllib.request
 
-# Constants
-RE_URL = re.compile(r"((?:<.*?>\.)?(?:(?:\*\.?)?[A-Za-z0-9\-]+\.)+(?!md[#)])[a-z]{2,})(?:/.*?(?:\s|$))?")
-RE_IPV6 = re.compile(r"(\b(?:[0-9a-f]+:){2,}(?::|[0-9a-fA-F]{1,4})/\d{1,3})")
-RE_IPV4 = re.compile(r"(\b(?:\d{1,3}\.){3}\d{1,3}(?:/\d{1,2})?\b)")
+from patterns import RE_IPV4, RE_IPV6, RE_MDTABLE
 
 
 def write_list(directory, filename, items):
     if items:
         with open(directory / filename, "w") as f:
-            for item in items:
-                f.write(f"{item}\n")
+            f.writelines(f"{item}\n" for item in items)
 
 
 def natsort_fqdn(s):
@@ -35,8 +31,7 @@ def natsort_ip(ip_list):
         addr = ipaddress.ip_network(ip)
         if isinstance(addr, ipaddress.IPv6Network):
             return 0, addr.network_address.packed
-        else:
-            return 1, addr.network_address.packed
+        return 1, addr.network_address.packed
 
     return sorted(ip_list, key=ip_sort_key)
 
@@ -44,8 +39,7 @@ def natsort_ip(ip_list):
 def get_response_data(url):
     try:
         with urllib.request.urlopen(url) as response:
-            data = response.read().decode()
-            return data
+            return response.read().decode()
     except urllib.error.URLError as e:
         raise Exception(f"Error: {e} while fetching data from {url}")
 
@@ -85,27 +79,19 @@ def process_ips(ip_input, return_ipv6=False):
 
 
 def extract_tables(input_data):
-
-    # Regular expression pattern for a Markdown table
-    pattern = r"(^\|.*\|$\r?\n\|(?:\s|:)?-+.*\|(?:\r?\n\|.*\|)+)"
-    tables = re.findall(pattern, input_data, re.MULTILINE)
-
-    return tables
+    return re.findall(RE_MDTABLE, input_data)
 
 
 def md_table_to_dict(table_string):
     lines = table_string.split("\n")
-    ret = []
-    keys = []
-    for i, l in enumerate(lines):
-        if i == 0:
-            keys = [_i.strip() for _i in l.split("|")]
-        elif i == 1:
-            continue
-        else:
-            ret.append({keys[_i]: v.strip() for _i, v in enumerate(l.split("|")) if 0 < _i < len(keys) - 1})
+    if len(lines) < 3:
+        return []
 
-    return ret
+    keys = [k.strip() for k in lines[0].split("|")]
+    return [
+        {keys[i]: v.strip() for i, v in enumerate(line.split("|")) if 0 < i < len(keys) - 1}
+        for line in lines[2:]  # Skip header and separator
+    ]
 
 
 def extract_network_item(source_list, pattern):
@@ -122,9 +108,8 @@ def extract_network_item(source_list, pattern):
                     result_list.append(str(ipaddress.ip_network(match)))
                 else:
                     # Edge case to avoid italicized markdown
-                    if not re.search(r"`\S*{}\S*`".format(re.escape(match)), line):
-                        if match.count("*") > 1:
-                            match = match.replace("*", "")
+                    if not re.search(rf"`\S*{re.escape(match)}\S*`", line) and match.count("*") > 1:
+                        match = match.replace("*", "")
 
                     result_list.append(match.lower())
     return result_list

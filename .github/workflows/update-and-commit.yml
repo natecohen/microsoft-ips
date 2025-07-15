@@ -1,6 +1,8 @@
 name: Daily Update
 
 on:
+  schedule:
+    - cron: '0 12 * * *'  # Run daily at 12:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -14,32 +16,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
       - name: Run update script
         run: python main.py
 
-      - name: Check for updates
-        id: check_updates
+      - name: Check for updates and commit
+        if: env.UPDATES_FOUND == 'true'
         run: |
-          if [ -f updated_categories.txt ]; then
-            echo "updates_found=true" >> $GITHUB_ENV
-            CURRENT_DATE=$(date +'%Y-%m-%d')
-            UPDATED_CATEGORIES=$(cat updated_categories.txt | tr '\n' ', ' | sed 's/, $//')
-            COMMIT_MESSAGE="${CURRENT_DATE} Updated ${UPDATED_CATEGORIES}"
-            echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_ENV
-            git add .
-          else
-            echo "updates_found=false" >> $GITHUB_ENV
-          fi
+          COMMIT_MESSAGE="Updated ${{ env.UPDATED_CATEGORIES }}"
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "${COMMIT_MESSAGE}"
+          git push
 
-      - name: Commit
-        if: env.updates_found == 'true'
-        uses: qoomon/actions--create-commit@v1
-        id: commit
-        with:
-          message: ${{ env.commit_message }}
-          skip-empty: true
-          token: ${{ secrets.ACTION_TOKEN }}
-
-      - name: Push
-        if: ${{ steps.commit.outputs.commit }}
-        run: git push
+      - name: No updates found
+        if: env.UPDATES_FOUND == 'false'
+        run: echo "No updates found, skipping commit"

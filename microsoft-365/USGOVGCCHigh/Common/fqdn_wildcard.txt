@@ -12,6 +12,9 @@
 *.office365.us
 *.osi.office365.us
 *.security.microsoft.us
+*.usgovcloud.microsoft
+*.usgovcloud-static.microsoft
+*.usgovcloud-usercontent.microsoft
 activation.sls.microsoft.com
 activity.windows.com
 cdn.odc.officeapps.live.com

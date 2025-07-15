@@ -10,5 +10,4 @@ g.live.com
 officeclient.microsoft.com
 oneclient.sfx.ms
 spoprod-a.akamaihd.net
-ssw.live.com
 storage.live.com

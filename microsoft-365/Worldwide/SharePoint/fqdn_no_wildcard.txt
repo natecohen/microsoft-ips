@@ -8,7 +8,6 @@ search.production.us.trafficmanager.net
 sharepoint.com
 sharepointonline.com
 spoprod-a.akamaihd.net
-ssw.live.com
 storage.live.com
 svc.ms
 wns.windows.com

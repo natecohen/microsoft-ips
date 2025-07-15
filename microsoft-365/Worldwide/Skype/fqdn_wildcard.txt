@@ -4,7 +4,6 @@
 *.streaming.mediaservices.windows.net
 *.teams.cloud.microsoft
 *.teams.microsoft.com
-*.users.storage.live.com
 adl.windows.com
 aka.ms
 compass-ssl.microsoft.com

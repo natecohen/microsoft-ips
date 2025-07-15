@@ -11,9 +11,7 @@
 *.cloud.microsoft
 *.cortana.ai
 *.delivery.mp.microsoft.com
-*.dl.delivery.mp.microsoft.com
 *.do.dsp.mp.microsoft.com
-*.emdl.ws.microsoft.com
 *.entrust.net
 *.events.data.microsoft.com
 *.flow.microsoft.com
@@ -58,7 +56,6 @@
 *.portal.cloudappsecurity.com
 *.powerapps.com
 *.powerautomate.com
-*.prod.do.dsp.mp.microsoft.com
 *.protection.office.com
 *.protection.outlook.com
 *.public-trust.com
@@ -83,7 +80,6 @@
 *.trouter.teams.microsoft.com
 *.update.microsoft.com
 *.usercontent.microsoft
-*.users.storage.live.com
 *.verisign.com
 *.verisign.net
 *.virtualearth.net
@@ -144,12 +140,10 @@ crl.identrust.com
 crl.microsoft.com
 crl3.digicert.com
 crl4.digicert.com
-d.docs.live.net
 dc.services.visualstudio.com
 defender.microsoft.com
 device.login.microsoftonline.com
 dgps.support.microsoft.com
-docs.live.net
 docs.microsoft.com
 ecn.dev.virtualearth.net
 ecs.communication.microsoft.com
@@ -252,9 +246,6 @@ shellprod.msocdn.com
 signup.live.com
 smtp.office365.com
 spoprod-a.akamaihd.net
-ssw.live.com
-staffhub.ms
-staffhubweb.azureedge.net
 storage.live.com
 support.microsoft.com
 sway.com

@@ -1,14 +1,14 @@
 {
-  "azure-Public": "Thu, 05 Dec 2024 16:31:31 GMT",
-  "azure-AzureGermany": "Thu, 05 Dec 2024 16:31:32 GMT",
-  "azure-AzureGovernment": "Thu, 05 Dec 2024 16:31:32 GMT",
-  "azure-China": "Thu, 05 Dec 2024 16:31:32 GMT",
-  "microsoft-365-Worldwide": "Thu, 30 May 2024 02:06:53 Z",
-  "microsoft-365-China": "Fri, 29 Mar 2024 06:23:48 Z",
-  "microsoft-365-USGOVDoD": "Thu, 30 May 2024 02:06:53 Z",
-  "microsoft-365-USGOVGCCHigh": "Fri, 01 Dec 2023 00:39:25 Z",
+  "microsoft-365-Worldwide": "Mon, 30 Jun 2025 01:25:26 Z",
+  "microsoft-365-China": "Mon, 30 Jun 2025 01:25:26 Z",
+  "microsoft-365-USGOVDoD": "Wed, 30 Apr 2025 00:17:36 Z",
+  "microsoft-365-USGOVGCCHigh": "Wed, 30 Apr 2025 00:17:36 Z",
   "office-mac": "2025-02-14T22:09:00Z",
-  "windows-11": "2025-02-06T21:00:55Z",
-  "entra-connect": "2025-03-18T15:52:43Z",
-  "entra-connect-health": "2025-03-07T18:21:42Z"
+  "windows-11": "2025-05-23T22:20:17Z",
+  "entra-connect": "2025-05-26T22:47:41Z",
+  "entra-connect-health": "2025-06-03T20:44:47Z",
+  "azure-Public": "Mon, 14 Jul 2025 13:52:13 GMT",
+  "azure-AzureGermany": "Mon, 14 Jul 2025 13:52:15 GMT",
+  "azure-AzureGovernment": "Mon, 14 Jul 2025 13:52:14 GMT",
+  "azure-China": "Mon, 14 Jul 2025 13:52:14 GMT"
 }

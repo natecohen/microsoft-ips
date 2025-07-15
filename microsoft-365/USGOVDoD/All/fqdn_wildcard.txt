@@ -18,6 +18,10 @@
 *.security.apps.mil
 *.sharepoint-mil.us
 *.svc.ms
+*.usgovcloud.microsoft
+*.usgovcloud-mx.microsoft
+*.usgovcloud-static.microsoft
+*.usgovcloud-usercontent.microsoft
 *.wns.windows.com
 activation.sls.microsoft.com
 activity.windows.com
@@ -52,7 +56,6 @@ go.microsoft.com
 graph.microsoftazure.us
 graph.windows.net
 insertmedia.bing.office.net
-lgm-svc-fxp-ugv-cses02-dns02.usgovvirginia.cloudapp.usgovcloudapi.net
 lgm-svc-fxp-ugv-cses-dns.usgovvirginia.cloudapp.usgovcloudapi.net
 login.microsoftonline.com
 login.microsoftonline.us
@@ -62,7 +65,6 @@ login-us.microsoftonline.com
 loginex.microsoftonline.com
 lpcres.delve.office.com
 mamls-fxp-eus-ip.usgovvirginia.cloudapp.usgovcloudapi.net
-mamwip-ffpe-us-ip.usgovvirginia.cloudapp.usgovcloudapi.net
 mrodevicemgr.officeapps.live.com
 mscrl.microsoft.com
 msteamsstatics.blob.core.usgovcloudapi.net

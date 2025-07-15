@@ -43,13 +43,11 @@ crl.identrust.com
 crl.microsoft.com
 crl3.digicert.com
 crl4.digicert.com
-d.docs.live.net
 dc.services.visualstudio.com
 defender.microsoft.com
 device.login.microsoftonline.com
 dgps.support.microsoft.com
 dn.onenote.net
-docs.live.net
 docs.microsoft.com
 ecn.dev.virtualearth.net
 enterpriseregistration.windows.net
@@ -136,8 +134,6 @@ security.microsoft.com
 sharepointonline.com
 shellprod.msocdn.com
 signup.live.com
-staffhub.ms
-staffhubweb.azureedge.net
 static.microsoft
 support.microsoft.com
 sway.com

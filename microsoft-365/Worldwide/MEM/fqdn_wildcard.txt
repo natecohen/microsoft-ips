@@ -1,7 +1,5 @@
 *.delivery.mp.microsoft.com
-*.dl.delivery.mp.microsoft.com
 *.do.dsp.mp.microsoft.com
-*.emdl.ws.microsoft.com
 *.gov.teams.microsoft.us
 *.itunes.apple.com
 *.manage.microsoft.com
@@ -9,7 +7,6 @@
 *.mzstatic.com
 *.notify.windows.com
 *.phobos.apple.com
-*.prod.do.dsp.mp.microsoft.com
 *.s-microsoft.com
 *.support.services.microsoft.com
 *.trouter.communication.microsoft.com

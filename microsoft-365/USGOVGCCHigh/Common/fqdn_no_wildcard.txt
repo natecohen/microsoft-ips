@@ -56,4 +56,7 @@ security.microsoft.us
 tasks.office365.us
 tb.events.data.microsoft.com
 tb.pipe.aria.microsoft.com
+usgovcloud.microsoft
+usgovcloud-static.microsoft
+usgovcloud-usercontent.microsoft
 www.office365.us

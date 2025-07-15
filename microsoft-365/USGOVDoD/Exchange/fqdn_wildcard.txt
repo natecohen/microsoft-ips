@@ -1,5 +1,6 @@
 *.protection.apps.mil
 *.protection.office365.us
+*.usgovcloud-mx.microsoft
 attachments-dod.office365-net.us
 autodiscover.*.mail.onmicrosoft.com
 autodiscover.*.mail.onmicrosoft.us

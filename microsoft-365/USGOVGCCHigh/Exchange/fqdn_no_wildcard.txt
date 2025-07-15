@@ -4,3 +4,4 @@ manage.office365.us
 outlook.office365.us
 protection.office365.us
 scc.office365.us
+usgovcloud-mx.microsoft

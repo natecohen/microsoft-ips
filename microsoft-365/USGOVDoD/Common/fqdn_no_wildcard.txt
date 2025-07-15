@@ -54,5 +54,8 @@ reports.apps.mil
 scc.protection.apps.mil
 secure.aadcdn.microsoftonline-p.com
 security.apps.mil
+usgovcloud.microsoft
+usgovcloud-static.microsoft
+usgovcloud-usercontent.microsoft
 webshell.dodsuite.office365.us
 www.ohome.apps.mil

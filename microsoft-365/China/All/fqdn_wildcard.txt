@@ -15,8 +15,6 @@
 *.onmschina.cn
 *.partner.lync.cn
 *.partner.microsoftonline.cn
-*.partner.microsoftonline.net.cn
-*.partner.microsoftonline-i.net.cn
 *.partner.microsoftonline-m.net.cn
 *.partner.microsoftonline-m-i.net.cn
 *.partner.microsoftonline-p.cn
@@ -26,6 +24,9 @@
 *.partner.outlook.cn
 *.protection.partner.outlook.cn
 *.sharepoint.cn
+*.sovcloud.cn
+*.sovcloud-static.cn
+*.sovcloud-usercontent.cn
 *.teams.microsoftonline.cn
 *.windowsazure.cn
 *.wns.windows.com

@@ -14,8 +14,6 @@
 *.officewebapps.cn
 *.onmschina.cn
 *.partner.microsoftonline.cn
-*.partner.microsoftonline.net.cn
-*.partner.microsoftonline-i.net.cn
 *.partner.microsoftonline-m.net.cn
 *.partner.microsoftonline-m-i.net.cn
 *.partner.microsoftonline-p.cn
@@ -23,6 +21,9 @@
 *.partner.office365.cn
 *.partner.officewebapps.cn
 *.protection.partner.outlook.cn
+*.sovcloud.cn
+*.sovcloud-static.cn
+*.sovcloud-usercontent.cn
 *.windowsazure.cn
 activation.sls.microsoft.com
 crl.microsoft.com

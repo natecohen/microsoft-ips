@@ -90,12 +90,10 @@ crl.identrust.com
 crl.microsoft.com
 crl3.digicert.com
 crl4.digicert.com
-d.docs.live.net
 dc.services.visualstudio.com
 defender.microsoft.com
 device.login.microsoftonline.com
 dgps.support.microsoft.com
-docs.live.net
 docs.microsoft.com
 ecn.dev.virtualearth.net
 enterpriseregistration.windows.net
@@ -149,8 +147,6 @@ secure.globalsign.com
 security.microsoft.com
 shellprod.msocdn.com
 signup.live.com
-staffhub.ms
-staffhubweb.azureedge.net
 support.microsoft.com
 sway.com
 technet.microsoft.com

@@ -11,6 +11,9 @@
 *.msftauthimages.us
 *.office365.us
 *.security.apps.mil
+*.usgovcloud.microsoft
+*.usgovcloud-static.microsoft
+*.usgovcloud-usercontent.microsoft
 activation.sls.microsoft.com
 activity.windows.com
 cdn.odc.officeapps.live.com

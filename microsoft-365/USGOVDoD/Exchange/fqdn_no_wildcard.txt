@@ -3,4 +3,5 @@ autodiscover-s-dod.office365.us
 outlook-dod.office365.us
 protection.apps.mil
 protection.office365.us
+usgovcloud-mx.microsoft
 webmail.apps.mil

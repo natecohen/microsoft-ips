@@ -12,14 +12,12 @@ contentauthassetscdn-prodeur.azureedge.net
 contentauthrafcontentcdn-prod.azureedge.net
 contentauthrafcontentcdn-prodeur.azureedge.net
 delivery.mp.microsoft.com
-dl.delivery.mp.microsoft.com
 do.dsp.mp.microsoft.com
 ecs.communication.microsoft.com
 edge.microsoft.com
 edge.skype.com
 ekcert.spserv.microsoft.com
 ekop.intel.com
-emdl.ws.microsoft.com
 euprodimedatahotfix.azureedge.net
 euprodimedatapri.azureedge.net
 euprodimedatasec.azureedge.net
@@ -54,7 +52,6 @@ notify.windows.com
 ocsp.apple.com
 phobos.apple.com
 phobos.itunes-apple.com.akadns.net
-prod.do.dsp.mp.microsoft.com
 remoteassistanceprodacs.communication.azure.com
 remoteassistanceprodacseu.communication.azure.com
 remoteassistanceweb.usgov.communication.azure.us
