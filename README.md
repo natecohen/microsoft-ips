@@ -48,7 +48,7 @@ Some may be split further by service, and include an "All" subfolder with combin
 - [Windows 365](https://learn.microsoft.com/en-us/windows-365/enterprise/requirements-network)
 - [Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/network-requirements-consolidated)
 - [Microsoft 365 third-party services](https://learn.microsoft.com/en-us/microsoft-365/enterprise/managing-office-365-endpoints?view=o365-worldwide#why-do-i-see-names-such-as-nsatcnet-or-akadnsnet-in-the-microsoft-domain-names)
-- [Microsoft Ajaz CDN](https://learn.microsoft.com/en-us/microsoft-365/enterprise/content-delivery-networks?view=o365-worldwide#microsoft-ajax-cdn)
+- [Microsoft Ajax CDN](https://learn.microsoft.com/en-us/microsoft-365/enterprise/content-delivery-networks?view=o365-worldwide#microsoft-ajax-cdn)
 
 You may find Windows attempt direct IP connections for updates. Those that are a part of [Microsoft Connected Cache for ISPs](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/microsoft-connected-cache-for-isps-microsoft-s-distributed-cdn/ba-p/3891604) are not published.
 
