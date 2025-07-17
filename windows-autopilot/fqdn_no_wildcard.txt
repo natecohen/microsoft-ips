@@ -1,0 +1,11 @@
+azure.microsoft.com
+cs.dds.microsoft.com
+ekcert.spserv.microsoft.com
+ekop.intel.com
+ftpm.amd.com
+lgmsapeweu.blob.core.windows.net
+login.live.com
+microsoftaik.azure.net
+msftconnecttest.com
+time.windows.com
+ztd.dds.microsoft.com

@@ -20,17 +20,27 @@ from util import (
     write_list,
 )
 
+from urlextract import URLExtract
 
-def process_markdown_common(md_url, url_key, outdir):
+
+def process_markdown_common(md_url, url_key, outdir, urlextract=False, ignore_list=None):
     fqdns = set()
     md_data = get_response_data(md_url)
-    extracted_tables = extract_tables(md_data)
 
-    for table in extracted_tables:
-        table_data = md_table_to_dict(table)
-        table_urls = [x.get(url_key) for x in table_data if url_key in x]
-        extracted_fqdn_list = extract_network_item(table_urls, RE_URL)
-        fqdns.update(extracted_fqdn_list)
+    if urlextract:
+        extractor = URLExtract()
+        if ignore_list:
+            extractor.ignore_list = ignore_list
+        fqdns.update(extractor.find_urls(md_data))
+
+    else:
+        extracted_tables = extract_tables(md_data)
+
+        for table in extracted_tables:
+            table_data = md_table_to_dict(table)
+            table_urls = [x.get(url_key) for x in table_data if url_key in x]
+            extracted_fqdn_list = extract_network_item(table_urls, RE_URL)
+            fqdns.update(extracted_fqdn_list)
 
     outdir = Path(__file__).parent / outdir
     outdir.mkdir(parents=True, exist_ok=True)
@@ -289,6 +299,45 @@ class MicrosoftUpdateProcessor:
         except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
             print(f"Error processing {endpoint}: {type(e).__name__}")
 
+    def process_power_bi(self):
+        endpoint = "power-bi"
+        repo = "MicrosoftDocs/fabric-docs"
+        path = "docs/security/power-bi-allow-list-urls.md"
+
+        try:
+            last_commit_date = get_last_commit_date(repo, path)
+            if not self._check_and_update(endpoint, last_commit_date):
+                return
+
+            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
+            process_markdown_common(md_url, "Destination", endpoint)
+
+        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
+            print(f"Error processing {endpoint}: {type(e).__name__}")
+
+    def process_autopilot(self):
+        endpoint = "windows-autopilot"
+        repo = "MicrosoftDocs/memdocs"
+        path = "autopilot/requirements.md"
+        ignore_list = {
+            "learn.microsoft.com",
+            "www.microsoft.com",
+            "support.microsoft.com",
+            "techcommunity.microsoft.com",
+            "youtube.com",
+        }
+
+        try:
+            last_commit_date = get_last_commit_date(repo, path)
+            if not self._check_and_update(endpoint, last_commit_date):
+                return
+
+            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
+            process_markdown_common(md_url, "Destination", endpoint, True, ignore_list)
+
+        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
+            print(f"Error processing {endpoint}: {type(e).__name__}")
+
 
 def main():
     processor = MicrosoftUpdateProcessor("last_update.json")
@@ -299,6 +348,8 @@ def main():
     processor.process_entra_connect()
     processor.process_entra_connect_health()
     processor.process_azure()
+    processor.process_power_bi()
+    processor.process_autopilot()
 
     updates_found = False
     updated_categories = ""
@@ -312,10 +363,12 @@ def main():
         print("No updates found")
 
     # Set environment variables for GitHub Action
-    with open(os.environ.get("GITHUB_ENV", "/dev/null"), "a") as f:
-        f.write(f"UPDATES_FOUND={str(updates_found).lower()}\n")
-        if updates_found:
-            f.write(f"UPDATED_CATEGORIES={updated_categories}\n")
+    env_path = os.getenv("GITHUB_ENV")
+    if env_path:
+        with open(env_path, "a") as f:
+            f.write(f"UPDATES_FOUND={str(updates_found).lower()}\n")
+            if updates_found:
+                f.write(f"UPDATED_CATEGORIES={updated_categories}\n")
 
 
 if __name__ == "__main__":

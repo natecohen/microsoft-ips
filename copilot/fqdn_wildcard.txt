@@ -1,0 +1,6 @@
+*.bing.com
+*.bingapis.com
+*.cloud.microsoft
+*.copilot.microsoft.com
+*.office.com
+copilot.microsoft.com
