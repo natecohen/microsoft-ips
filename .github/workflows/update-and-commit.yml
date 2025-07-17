@@ -28,14 +28,12 @@ jobs:
 
       - name: Check for updates and commit
         if: env.UPDATES_FOUND == 'true'
-        run: |
-          COMMIT_MESSAGE="Updated ${{ env.UPDATED_CATEGORIES }}"
-          
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "${COMMIT_MESSAGE}"
-          git push
+        uses: IAreKyleW00t/verified-bot-commit@v1
+        with:
+          message: "Updated ${{ env.UPDATED_CATEGORIES }}"
+          files: |
+            **
+          if-no-commit: info
 
       - name: No updates found
         if: env.UPDATES_FOUND == 'false'
