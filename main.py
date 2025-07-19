@@ -1,80 +1,75 @@
+import hashlib
 import json
 import os
 import urllib.error
 import urllib.request
 import uuid
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from patterns import RE_URL
+from urlextract import URLExtract
 from util import (
     extract_network_item,
     extract_tables,
-    get_last_commit_date,
     get_response_data,
     md_table_to_dict,
     natsort_fqdn,
     natsort_ip,
     process_ips,
     return_fqdn_no_wildcard,
-    write_list,
 )
 
-from urlextract import URLExtract
 
-
-def process_markdown_common(md_url, url_key, outdir, urlextract=False, ignore_list=None):
+def process_markdown_common(md_data, url_key, urlextract=False, ignore_list=None):
     fqdns = set()
-    md_data = get_response_data(md_url)
-
     if urlextract:
         extractor = URLExtract()
         if ignore_list:
             extractor.ignore_list = ignore_list
         fqdns.update(extractor.find_urls(md_data))
-
     else:
         extracted_tables = extract_tables(md_data)
-
         for table in extracted_tables:
             table_data = md_table_to_dict(table)
             table_urls = [x.get(url_key) for x in table_data if url_key in x]
             extracted_fqdn_list = extract_network_item(table_urls, RE_URL)
             fqdns.update(extracted_fqdn_list)
+    return fqdns
 
-    outdir = Path(__file__).parent / outdir
-    outdir.mkdir(parents=True, exist_ok=True)
 
-    sorted_fqdn = sorted(fqdns, key=natsort_fqdn)
-    write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+def write_if_changed(filepath, new_content_list):
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    new_content_str = "\n".join(new_content_list)
+    if new_content_list:
+        new_content_str += "\n"
 
-    fqdn_no_wildcard = return_fqdn_no_wildcard(fqdns)
-    sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=natsort_fqdn)
-    write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+    try:
+        old_content_str = filepath.read_text(encoding="utf-8")
+        if old_content_str == new_content_str:
+            return False  # No changes
+    except FileNotFoundError:
+        pass  # File doesn't exist, so it's a change
+
+    filepath.write_text(new_content_str, encoding="utf-8")
+    return True  # Changes were made
 
 
 def _write_fqdn_files(outdir, urls):
-    outdir.mkdir(parents=True, exist_ok=True)
-
     sorted_fqdn = sorted(urls, key=natsort_fqdn)
-    write_list(outdir, "fqdn_wildcard.txt", sorted_fqdn)
+    changed_fqdn = write_if_changed(outdir / "fqdn_wildcard.txt", sorted_fqdn)
 
     fqdn_no_wildcard = return_fqdn_no_wildcard(urls)
     sorted_fqdn_no_wildcard = sorted(fqdn_no_wildcard, key=natsort_fqdn)
-    write_list(outdir, "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+    changed_wildcard = write_if_changed(outdir / "fqdn_no_wildcard.txt", sorted_fqdn_no_wildcard)
+
+    return changed_fqdn or changed_wildcard
 
 
 def _write_ip_files(outdir, ips):
-    outdir.mkdir(parents=True, exist_ok=True)
-
-    sorted_ips = natsort_ip(ips)
-    write_list(outdir, "ip_cidr.txt", sorted_ips)
-
-    sorted_ipv6 = natsort_ip(process_ips(ips, return_ipv6=True))
-    write_list(outdir, "ipv6_cidr.txt", sorted_ipv6)
-
-    sorted_ipv4 = natsort_ip(process_ips(ips, return_ipv6=False))
-    write_list(outdir, "ipv4_cidr.txt", sorted_ipv4)
+    changed_ip = write_if_changed(outdir / "ip_cidr.txt", natsort_ip(ips))
+    changed_ipv4 = write_if_changed(outdir / "ipv6_cidr.txt", natsort_ip(process_ips(ips, return_ipv6=True)))
+    changed_ipv6 = write_if_changed(outdir / "ipv4_cidr.txt", natsort_ip(process_ips(ips, return_ipv6=False)))
+    return changed_ip or changed_ipv4 or changed_ipv6
 
 
 class MicrosoftUpdateProcessor:
@@ -89,16 +84,6 @@ class MicrosoftUpdateProcessor:
         except (FileNotFoundError, json.JSONDecodeError):
             pass
 
-    def _check_and_update(self, category, new_version):
-        if new_version != self.last_update_data.get(category):
-            self.last_update_data[category] = new_version
-            self.updated_categories.append(category)
-            print(f"Processing: {category}")
-            return True
-
-        print(f"No update: {category}")
-        return False
-
     def has_updates(self):
         return bool(self.updated_categories)
 
@@ -109,6 +94,35 @@ class MicrosoftUpdateProcessor:
     def get_updated_categories(self):
         return self.updated_categories
 
+    def _process_generic_markdown(self, endpoint, repo, path, url_key, urlextract=False, ignore_list=None, subdir=None):
+        try:
+            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
+            if endpoint in ["windows-11", "office-mac"]:
+                md_url = f"https://raw.githubusercontent.com/{repo}/public/{path}"
+
+            md_data = get_response_data(md_url)
+            content_hash = hashlib.sha256(md_data.encode()).hexdigest()
+
+            if content_hash == self.last_update_data.get(endpoint):
+                print(f"No update: {endpoint}")
+                return
+
+            urls = process_markdown_common(md_data, url_key, urlextract, ignore_list)
+
+            outdir = Path(__file__).parent / endpoint
+            if subdir:
+                outdir = outdir / subdir
+
+            if _write_fqdn_files(outdir, urls):
+                print(f"Update found for: {endpoint}")
+                self.updated_categories.append(endpoint)
+                self.last_update_data[endpoint] = content_hash
+            else:
+                print(f"No meaningful update: {endpoint}")
+
+        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
+            print(f"Error processing {endpoint}: {type(e).__name__}")
+
     def process_azure(self):
         endpoints = ["Public", "AzureGermany", "AzureGovernment", "China"]
 
@@ -117,36 +131,43 @@ class MicrosoftUpdateProcessor:
             json_url = f"https://azureipranges.azurewebsites.net/Data/{endpoint}.json"
 
             try:
-                request = urllib.request.Request(json_url, method="HEAD")
-                request.add_header("If-Modified-Since", "Thu, 01 Jan 1970 00:00:00 GMT")
-                last_modified = urllib.request.urlopen(request).getheader("last-modified")
+                json_string = get_response_data(json_url)
+                content_hash = hashlib.sha256(json_string.encode()).hexdigest()
 
-                if not self._check_and_update(category, last_modified):
+                if content_hash == self.last_update_data.get(category):
+                    print(f"No update: {category}")
                     continue
 
-                data = json.loads(get_response_data(json_url))
-                region_service_list = {}
+                data = json.loads(json_string)
+                any_change_in_category = False
 
+                # Process data into a structured map first
+                region_service_list = {}
                 for item in data["values"]:
                     if item["id"].startswith("AzureCloud"):
                         continue
-
                     region = item["properties"].get("region") or "_noregion"
                     system_service = item["properties"].get("systemService") or item.get("id")
                     address_prefixes = set(item["properties"]["addressPrefixes"])
-
                     if region not in region_service_list:
                         region_service_list[region] = {}
-
                     if system_service not in region_service_list[region]:
                         region_service_list[region][system_service] = set()
-
                     region_service_list[region][system_service].update(address_prefixes)
 
+                # Now, iterate and write if changed
                 for region, services in region_service_list.items():
                     for service, address_prefixes in services.items():
                         outdir = Path(__file__).parent / "azure" / endpoint / region / service
-                        _write_ip_files(outdir, address_prefixes)
+                        if _write_ip_files(outdir, address_prefixes):
+                            any_change_in_category = True
+
+                if any_change_in_category:
+                    print(f"Update found for: {category}")
+                    self.updated_categories.append(category)
+                    self.last_update_data[category] = content_hash
+                else:
+                    print(f"No meaningful update: {category}")
 
             except (json.JSONDecodeError, urllib.error.URLError, KeyError) as e:
                 print(f"Error processing {category}: {type(e).__name__}")
@@ -160,26 +181,10 @@ class MicrosoftUpdateProcessor:
 
         for endpoint in endpoints:
             category = f"microsoft-365-{endpoint}"
-            change_url = f"https://endpoints.office.com/version/{endpoint}?allversions=true&format=rss&clientrequestid={client_request_id}"
 
             try:
-                change_data_root = ET.fromstring(get_response_data(change_url))
-                last_build_date = change_data_root.find(".//lastBuildDate").text
-
-                if not self._check_and_update(category, last_build_date):
-                    continue
-
-            except (ET.ParseError, urllib.error.URLError):
-                print(f"Error getting version for {category}")
-                continue
-
-            service_areas = {"All": {"urls": set(), "ips": set()}}
-
-            json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ClientRequestId={client_request_id}"
-            try:
-                data = json.loads(get_response_data(json_url))
-
-                # MEM serviceArea is not included by default
+                json_url = f"https://endpoints.office.com/endpoints/{endpoint}?ClientRequestId={client_request_id}"
+                data_list = json.loads(get_response_data(json_url))
                 if endpoint in mem_endpoints:
                     try:
                         mem_data = json.loads(
@@ -187,156 +192,140 @@ class MicrosoftUpdateProcessor:
                                 f"https://endpoints.office.com/endpoints/{endpoint}?ServiceAreas=MEM&ClientRequestId={client_request_id}"
                             )
                         )
-                        data.extend(obj for obj in mem_data if obj.get("serviceArea") == "MEM")
+                        data_list.extend(obj for obj in mem_data if obj.get("serviceArea") == "MEM")
                     except (json.JSONDecodeError, urllib.error.URLError):
                         pass
 
-                for obj in data:
-                    service_area = obj["serviceArea"]
-                    urls = obj.get("urls")
-                    ips = obj.get("ips")
+                data_list.sort(key=lambda x: x["id"])
+                canonical_json = json.dumps(data_list)
+                content_hash = hashlib.sha256(canonical_json.encode()).hexdigest()
 
+                if content_hash == self.last_update_data.get(category):
+                    print(f"No update: {category}")
+                    continue
+
+                service_areas = {"All": {"urls": set(), "ips": set()}}
+                for obj in data_list:
+                    service_area = obj["serviceArea"]
+                    urls, ips = obj.get("urls"), obj.get("ips")
                     if service_area not in service_areas:
                         service_areas[service_area] = {"urls": set(), "ips": set()}
-
-                    if urls is not None:
+                    if urls:
                         service_areas[service_area]["urls"].update(urls)
                         service_areas["All"]["urls"].update(urls)
-                    if ips is not None:
+                    if ips:
                         service_areas[service_area]["ips"].update(ips)
                         service_areas["All"]["ips"].update(ips)
+
+                any_change_in_category = False
+                for service_area, data in service_areas.items():
+                    outdir = Path(__file__).parent / "microsoft-365" / endpoint / service_area
+                    urls_changed = _write_fqdn_files(outdir, data["urls"])
+                    ips_changed = _write_ip_files(outdir, data["ips"])
+                    if urls_changed or ips_changed:
+                        any_change_in_category = True
+
+                if any_change_in_category:
+                    print(f"Update found for: {category}")
+                    self.updated_categories.append(category)
+                    self.last_update_data[category] = content_hash
+                else:
+                    print(f"No meaningful update: {category}")
+
             except (json.JSONDecodeError, urllib.error.URLError, KeyError) as e:
                 print(f"Error processing {category}: {type(e).__name__}")
-                continue
-
-            for service_area in service_areas:
-                outdir = Path(__file__).parent / "microsoft-365" / endpoint / service_area
-                _write_fqdn_files(outdir, service_areas[service_area]["urls"])
-                _write_ip_files(outdir, service_areas[service_area]["ips"])
-
-    def process_office_for_mac(self):
-        endpoint = "office-mac"
-        repo = "MicrosoftDocs/microsoft-365-docs"
-        path = "microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md"
-
-        try:
-            last_commit_date = get_last_commit_date(repo, path)
-            if not self._check_and_update(endpoint, last_commit_date):
-                return
-
-            md_url = f"https://raw.githubusercontent.com/{repo}/public/{path}"
-            process_markdown_common(md_url, "**URL**", endpoint)
-
-        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
-            print(f"Error processing {endpoint}: {type(e).__name__}")
-
-    def process_windows_11(self):
-        endpoint = "windows-11"
-        repo = "MicrosoftDocs/windows-itpro-docs"
-        path = "windows/privacy/manage-windows-11-endpoints.md"
-
-        try:
-            last_commit_date = get_last_commit_date(repo, path)
-            if not self._check_and_update(endpoint, last_commit_date):
-                return
-
-            md_url = f"https://raw.githubusercontent.com/{repo}/public/{path}"
-            process_markdown_common(md_url, "Destination", endpoint)
-
-        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
-            print(f"Error processing {endpoint}: {type(e).__name__}")
-
-    def process_entra_connect(self):
-        endpoint = "entra-connect"
-        repo = "MicrosoftDocs/entra-docs"
-        path = "docs/identity/hybrid/connect/tshoot-connect-connectivity.md"
-
-        try:
-            last_commit_date = get_last_commit_date(repo, path)
-            if not self._check_and_update(endpoint, last_commit_date):
-                return
-
-            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
-            process_markdown_common(md_url, "Destination", f"{endpoint}/Worldwide")
-
-        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
-            print(f"Error processing {endpoint}: {type(e).__name__}")
 
     def process_entra_connect_health(self):
         endpoint = "entra-connect-health"
         repo = "MicrosoftDocs/entra-docs"
         path = "docs/identity/hybrid/connect/how-to-connect-health-agent-install.md"
-
         try:
-            last_commit_date = get_last_commit_date(repo, path)
-            if not self._check_and_update(endpoint, last_commit_date):
+            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
+            md_data = get_response_data(md_url)
+            content_hash = hashlib.sha256(md_data.encode()).hexdigest()
+
+            if content_hash == self.last_update_data.get(endpoint):
+                print(f"No update: {endpoint}")
                 return
 
-            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
             health_fqdns = {"Public": set(), "AzureGovernment": set()}
-
-            md_data = get_response_data(md_url)
             extracted_tables = extract_tables(md_data)
-
             for table in extracted_tables:
                 table_data = md_table_to_dict(table)
                 for d in table_data:
                     if d.get("Domain environment") == "General public":
-                        table_urls = [d.get("Required Azure service endpoints")]
-                        extracted_fqdn_list = extract_network_item(table_urls, RE_URL)
-                        health_fqdns["Public"].update(extracted_fqdn_list)
+                        urls = extract_network_item([d.get("Required Azure service endpoints")], RE_URL)
+                        health_fqdns["Public"].update(urls)
                     elif d.get("Domain environment") == "Azure Government":
-                        table_urls = [d.get("Required Azure service endpoints")]
-                        extracted_fqdn_list = extract_network_item(table_urls, RE_URL)
-                        health_fqdns["AzureGovernment"].update(extracted_fqdn_list)
-                    else:
-                        break
+                        urls = extract_network_item([d.get("Required Azure service endpoints")], RE_URL)
+                        health_fqdns["AzureGovernment"].update(urls)
 
+            any_change_in_category = False
             for endpoint_name, urls in health_fqdns.items():
                 outdir = Path(__file__).parent / "entra-connect-health" / endpoint_name
-                _write_fqdn_files(outdir, urls)
+                if _write_fqdn_files(outdir, urls):
+                    any_change_in_category = True
+
+            if any_change_in_category:
+                print(f"Update found for: {endpoint}")
+                self.updated_categories.append(endpoint)
+                self.last_update_data[endpoint] = content_hash
+            else:
+                print(f"No meaningful update: {endpoint}")
 
         except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
             print(f"Error processing {endpoint}: {type(e).__name__}")
+
+    def process_office_for_mac(self):
+        self._process_generic_markdown(
+            "office-mac",
+            "MicrosoftDocs/microsoft-365-docs",
+            "microsoft-365/enterprise/network-requests-in-office-2016-for-mac.md",
+            "**URL**",
+        )
+
+    def process_windows_11(self):
+        self._process_generic_markdown(
+            "windows-11",
+            "MicrosoftDocs/windows-itpro-docs",
+            "windows/privacy/manage-windows-11-endpoints.md",
+            "Destination",
+        )
+
+    def process_entra_connect(self):
+        self._process_generic_markdown(
+            "entra-connect",
+            "MicrosoftDocs/entra-docs",
+            "docs/identity/hybrid/connect/tshoot-connect-connectivity.md",
+            "URL",
+            subdir="Worldwide",
+        )
 
     def process_power_bi(self):
-        endpoint = "power-bi"
-        repo = "MicrosoftDocs/fabric-docs"
-        path = "docs/security/power-bi-allow-list-urls.md"
-
-        try:
-            last_commit_date = get_last_commit_date(repo, path)
-            if not self._check_and_update(endpoint, last_commit_date):
-                return
-
-            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
-            process_markdown_common(md_url, "Destination", endpoint)
-
-        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
-            print(f"Error processing {endpoint}: {type(e).__name__}")
+        self._process_generic_markdown(
+            "power-bi",
+            "MicrosoftDocs/fabric-docs",
+            "docs/security/power-bi-allow-list-urls.md",
+            "Destination",
+        )
 
     def process_autopilot(self):
-        endpoint = "windows-autopilot"
-        repo = "MicrosoftDocs/memdocs"
-        path = "autopilot/requirements.md"
         ignore_list = {
             "learn.microsoft.com",
             "www.microsoft.com",
             "support.microsoft.com",
             "techcommunity.microsoft.com",
             "youtube.com",
+            "www.youtube.com",
         }
-
-        try:
-            last_commit_date = get_last_commit_date(repo, path)
-            if not self._check_and_update(endpoint, last_commit_date):
-                return
-
-            md_url = f"https://raw.githubusercontent.com/{repo}/main/{path}"
-            process_markdown_common(md_url, "Destination", endpoint, True, ignore_list)
-
-        except (urllib.error.URLError, KeyError, json.JSONDecodeError) as e:
-            print(f"Error processing {endpoint}: {type(e).__name__}")
+        self._process_generic_markdown(
+            "windows-autopilot",
+            "MicrosoftDocs/memdocs",
+            "autopilot/requirements.md",
+            "Destination",
+            urlextract=True,
+            ignore_list=ignore_list,
+        )
 
 
 def main():

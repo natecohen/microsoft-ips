@@ -8,12 +8,6 @@ import urllib.request
 from patterns import RE_IPV4, RE_IPV6, RE_MDTABLE
 
 
-def write_list(directory, filename, items):
-    if items:
-        with open(directory / filename, "w") as f:
-            f.writelines(f"{item}\n" for item in items)
-
-
 def natsort_fqdn(s):
     split_text = re.split(r"(\d+|\*|\.)", s)
     sort_key = []
@@ -31,10 +25,33 @@ def natsort_ip(ip_list):
     def ip_sort_key(ip):
         addr = ipaddress.ip_network(ip)
         if isinstance(addr, ipaddress.IPv6Network):
-            return 0, addr.network_address.packed
-        return 1, addr.network_address.packed
+            return 0, addr.network_address.packed, addr.prefixlen
+        return 1, addr.network_address.packed, addr.prefixlen
 
-    return sorted(ip_list, key=ip_sort_key)
+    return sorted(remove_redundant_ranges(ip_list), key=ip_sort_key)
+
+
+def remove_redundant_ranges(ip_list):
+    if not ip_list:
+        return []
+
+    networks = [(ip_str, ipaddress.ip_network(ip_str)) for ip_str in ip_list]
+
+    result = []
+
+    for i, (ip_str_i, network_i) in enumerate(networks):
+        is_redundant = False
+
+        # Check if this network is contained within any other network of the same version
+        for j, (ip_str_j, network_j) in enumerate(networks):
+            if i != j and network_i.version == network_j.version and network_i.subnet_of(network_j):
+                is_redundant = True
+                break
+
+        if not is_redundant:
+            result.append(ip_str_i)
+
+    return result
 
 
 def get_response_data(url, headers=None):
