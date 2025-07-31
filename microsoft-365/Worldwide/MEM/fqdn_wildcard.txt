@@ -1,4 +1,4 @@
-*.delivery.mp.microsoft.com
+*.dl.delivery.mp.microsoft.com
 *.do.dsp.mp.microsoft.com
 *.gov.teams.microsoft.us
 *.itunes.apple.com
@@ -16,6 +16,7 @@
 *.webpubsub.azure.com
 *.windowsupdate.com
 *.wns.windows.com
+2.dl.delivery.mp.microsoft.com
 5-courier.push.apple.com
 adl.windows.com
 api.flightproxy.skype.com
@@ -29,6 +30,7 @@ contentauthassetscdn-prod.azureedge.net
 contentauthassetscdn-prodeur.azureedge.net
 contentauthrafcontentcdn-prod.azureedge.net
 contentauthrafcontentcdn-prodeur.azureedge.net
+dl.delivery.mp.microsoft.com
 ecs.communication.microsoft.com
 edge.microsoft.com
 edge.skype.com

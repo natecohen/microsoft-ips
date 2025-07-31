@@ -6,7 +6,6 @@
 *.teams.microsoft.com
 adl.windows.com
 aka.ms
-compass-ssl.microsoft.com
 join.secure.skypeassets.com
 mlccdnprod.azureedge.net
 teams.cloud.microsoft

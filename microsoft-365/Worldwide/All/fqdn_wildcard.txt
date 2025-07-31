@@ -10,7 +10,7 @@
 *.azurerms.com
 *.cloud.microsoft
 *.cortana.ai
-*.delivery.mp.microsoft.com
+*.dl.delivery.mp.microsoft.com
 *.do.dsp.mp.microsoft.com
 *.entrust.net
 *.events.data.microsoft.com
@@ -89,6 +89,7 @@
 *.yammer.com
 *.yammerusercontent.com
 *cdn.onenote.net
+2.dl.delivery.mp.microsoft.com
 5-courier.push.apple.com
 account.activedirectory.windowsazure.com
 account.live.com
@@ -127,7 +128,6 @@ cert.int-x3.letsencrypt.org
 clientconfig.microsoftonline-p.net
 clientconfig.passport.net
 companymanager.microsoftonline.com
-compass-ssl.microsoft.com
 compliance.microsoft.com
 config.edge.skype.com
 contentauthassetscdn-prod.azureedge.net
@@ -144,6 +144,7 @@ dc.services.visualstudio.com
 defender.microsoft.com
 device.login.microsoftonline.com
 dgps.support.microsoft.com
+dl.delivery.mp.microsoft.com
 docs.microsoft.com
 ecn.dev.virtualearth.net
 ecs.communication.microsoft.com

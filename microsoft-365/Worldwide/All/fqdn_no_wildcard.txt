@@ -1,3 +1,4 @@
+2.dl.delivery.mp.microsoft.com
 5-courier.push.apple.com
 aadrm.com
 account.activedirectory.windowsazure.com
@@ -45,7 +46,6 @@ clientconfig.microsoftonline-p.net
 clientconfig.passport.net
 cloud.microsoft
 companymanager.microsoftonline.com
-compass-ssl.microsoft.com
 compliance.microsoft.com
 config.edge.skype.com
 contentauthassetscdn-prod.azureedge.net
@@ -61,9 +61,9 @@ crl3.digicert.com
 crl4.digicert.com
 dc.services.visualstudio.com
 defender.microsoft.com
-delivery.mp.microsoft.com
 device.login.microsoftonline.com
 dgps.support.microsoft.com
+dl.delivery.mp.microsoft.com
 dn.onenote.net
 do.dsp.mp.microsoft.com
 docs.microsoft.com

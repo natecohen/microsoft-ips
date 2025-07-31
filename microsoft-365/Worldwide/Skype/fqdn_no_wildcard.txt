@@ -1,6 +1,5 @@
 adl.windows.com
 aka.ms
-compass-ssl.microsoft.com
 join.secure.skypeassets.com
 keydelivery.mediaservices.windows.net
 lync.com
