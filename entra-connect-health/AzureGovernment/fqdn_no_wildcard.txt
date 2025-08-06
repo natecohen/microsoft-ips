@@ -5,7 +5,6 @@ autoupdate.msappproxy.us
 blob.core.usgovcloudapi.net
 login.microsoftonline.us
 management.usgovcloudapi.net
-policykeyservice.aadcdi.azure.us
 secure.aadcdn.microsoftonline-p.com
 servicebus.usgovcloudapi.net
 www.microsoft.com

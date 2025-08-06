@@ -8,7 +8,6 @@ autoupdate.msappproxy.net
 login.microsoftonline.com
 login.windows.net
 management.azure.com
-policykeyservice.dc.ad.msft.net
 secure.aadcdn.microsoftonline-p.com
 www.microsoft.com
 www.office.com

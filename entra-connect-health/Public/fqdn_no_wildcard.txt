@@ -7,7 +7,6 @@ blob.core.windows.net
 login.microsoftonline.com
 login.windows.net
 management.azure.com
-policykeyservice.dc.ad.msft.net
 secure.aadcdn.microsoftonline-p.com
 servicebus.windows.net
 www.microsoft.com
