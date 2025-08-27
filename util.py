@@ -56,11 +56,8 @@ def remove_redundant_ranges(ip_list):
 
 def get_response_data(url, headers=None):
     req = urllib.request.Request(url, headers=headers or {})
-    try:
-        with urllib.request.urlopen(req) as response:
-            return response.read().decode()
-    except urllib.error.URLError as e:
-        raise Exception(f"Error: {e} while fetching data from {url}")
+    with urllib.request.urlopen(req) as response:
+        return response.read().decode()
 
 
 def return_fqdn_no_wildcard(url_set):
