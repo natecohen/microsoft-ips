@@ -1,4 +1,3 @@
 gov.teams.microsoft.us
 msteamsstatics.blob.core.usgovcloudapi.net
 statics.teams.microsoft.com
-teamsapuiwebcontent.blob.core.usgovcloudapi.net

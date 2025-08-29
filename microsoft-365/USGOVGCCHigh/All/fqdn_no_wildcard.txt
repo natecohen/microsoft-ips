@@ -72,7 +72,6 @@ svc.ms
 tasks.office365.us
 tb.events.data.microsoft.com
 tb.pipe.aria.microsoft.com
-teamsapuiwebcontent.blob.core.usgovcloudapi.net
 usgovcloud.microsoft
 usgovcloud-mx.microsoft
 usgovcloud-static.microsoft

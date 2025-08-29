@@ -85,5 +85,4 @@ statics.teams.microsoft.com
 tasks.office365.us
 tb.events.data.microsoft.com
 tb.pipe.aria.microsoft.com
-teamsapuiwebcontent.blob.core.usgovcloudapi.net
 www.office365.us

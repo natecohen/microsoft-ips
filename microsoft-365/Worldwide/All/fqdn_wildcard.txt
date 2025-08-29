@@ -89,7 +89,6 @@
 *.yammer.com
 *.yammerusercontent.com
 *cdn.onenote.net
-2.dl.delivery.mp.microsoft.com
 5-courier.push.apple.com
 account.activedirectory.windowsazure.com
 account.live.com

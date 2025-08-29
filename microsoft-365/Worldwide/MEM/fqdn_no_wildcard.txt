@@ -1,4 +1,3 @@
-2.dl.delivery.mp.microsoft.com
 5-courier.push.apple.com
 adl.windows.com
 api.flightproxy.skype.com
