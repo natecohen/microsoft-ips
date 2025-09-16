@@ -41,6 +41,7 @@ officeclient.microsoft.com
 ols.officeapps.live.com
 omextemplates.content.office.net
 oscs.protection.outlook.com
+otelrules.svc.static.microsoft
 outlook.office365.com
 peoplegraph.firstpartyapps.oaspapps.com
 powerlift-frontdesk.acompli.net

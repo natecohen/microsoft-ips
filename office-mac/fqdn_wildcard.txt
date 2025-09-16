@@ -45,6 +45,7 @@ officeci-mauservice.azurewebsites.net
 officeclient.microsoft.com
 ols.officeapps.live.com
 omextemplates.content.office.net
+otelrules.svc.static.microsoft
 outlook.office365.com
 peoplegraph.firstpartyapps.oaspapps.com
 powerlift-frontdesk.acompli.net
