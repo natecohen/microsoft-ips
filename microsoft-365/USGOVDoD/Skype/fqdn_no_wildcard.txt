@@ -1,7 +1,4 @@
 dod.teams.microsoft.us
-dodteamsapuiwebcontent.blob.core.usgovcloudapi.net
-endpoint1-proddodcecompsvc-dodc.streaming.media.usgovcloudapi.net
-endpoint1-proddodeacompsvc-dode.streaming.media.usgovcloudapi.net
 msteamsstatics.blob.core.usgovcloudapi.net
 online.dod.skypeforbusiness.us
 statics.teams.microsoft.com

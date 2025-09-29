@@ -19,10 +19,7 @@ dod.online.office365.us
 dod.teams.microsoft.us
 dod-graph.microsoft.us
 dod-mtis.cortana.ai
-dodteamsapuiwebcontent.blob.core.usgovcloudapi.net
 dps.mil
-endpoint1-proddodcecompsvc-dodc.streaming.media.usgovcloudapi.net
-endpoint1-proddodeacompsvc-dode.streaming.media.usgovcloudapi.net
 fxpasu01sfring.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpwcpna03.usgovtexas.cloudapp.usgovcloudapi.net
 fxpwcpna04.usgovvirginia.cloudapp.usgovcloudapi.net

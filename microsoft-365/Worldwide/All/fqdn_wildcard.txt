@@ -19,7 +19,6 @@
 *.gov.teams.microsoft.us
 *.hip.live.com
 *.informationprotection.azure.com
-*.itunes.apple.com
 *.keydelivery.mediaservices.windows.net
 *.lync.com
 *.mail.protection.outlook.com
@@ -38,7 +37,6 @@
 *.msidentity.com
 *.msocdn.com
 *.mx.microsoft
-*.mzstatic.com
 *.notify.windows.com
 *.o365weve.com
 *.office.com
@@ -51,7 +49,6 @@
 *.onmicrosoft.com
 *.outlook.com
 *.outlookmobile.com
-*.phobos.apple.com
 *.phonefactor.net
 *.portal.cloudappsecurity.com
 *.powerapps.com
@@ -89,7 +86,6 @@
 *.yammer.com
 *.yammerusercontent.com
 *cdn.onenote.net
-5-courier.push.apple.com
 account.activedirectory.windowsazure.com
 account.live.com
 accounts.accesscontrol.windows.net
@@ -113,7 +109,6 @@ assets.onestore.ms
 auth.gfx.ms
 autodiscover.*.onmicrosoft.com
 autologon.microsoftazuread-sso.com
-ax.itunes.apple.com.edgesuite.net
 becws.microsoftonline.com
 c.bing.com
 c.bing.net
@@ -181,7 +176,6 @@ intunemaape17.jpe.attest.azure.net
 intunemaape18.jpe.attest.azure.net
 intunemaape19.jpe.attest.azure.net
 isrg.trustid.ocsp.identrust.com
-itunes.apple.com
 join.secure.skypeassets.com
 lgmsapeweu.blob.core.windows.net
 login.live.com
@@ -204,7 +198,6 @@ naprodimedatasec.azureedge.net
 nexus.microsoftonline-p.com
 o15.officeredir.microsoft.com
 ocos-office365-s2s.msedge.net
-ocsp.apple.com
 ocsp.digicert.com
 ocsp.globalsign.com
 ocsp.msocsp.com
@@ -227,8 +220,6 @@ outlook.office.com
 outlook.office365.com
 partnerservices.getmicrosoftkey.com
 passwordreset.microsoftonline.com
-phobos.apple.com
-phobos.itunes-apple.com.akadns.net
 platform.linkedin.com
 prod.msocdn.com
 protection.office.com
