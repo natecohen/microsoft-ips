@@ -32,7 +32,6 @@ autodiscover.*.mail.onmicrosoft.us
 autodiscover.*.onmicrosoft.com
 autodiscover.*.onmicrosoft.us
 autodiscover-s.office365.us
-az741266.vo.msecnd.net
 cdn.odc.officeapps.live.com
 clientconfig.microsoftonline-p.net
 compliance.microsoft.us
@@ -79,8 +78,6 @@ r.office.microsoft.com
 scc.office365.us
 secure.aadcdn.microsoftonline-p.com
 security.microsoft.us
-spoprod-a.akamaihd.net
-static.sharepointonline.com
 statics.teams.microsoft.com
 tasks.office365.us
 tb.events.data.microsoft.com

@@ -5,7 +5,6 @@ admin.onedrive.us
 attachments.office365-net.us
 auth.microsoft.us
 autodiscover-s.office365.us
-az741266.vo.msecnd.net
 cdn.odc.officeapps.live.com
 cdn.office.net
 clientconfig.microsoftonline-p.net
@@ -65,8 +64,6 @@ scc.office365.us
 secure.aadcdn.microsoftonline-p.com
 security.microsoft.us
 sharepoint.us
-spoprod-a.akamaihd.net
-static.sharepointonline.com
 statics.teams.microsoft.com
 svc.ms
 tasks.office365.us

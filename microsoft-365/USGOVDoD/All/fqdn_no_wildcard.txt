@@ -5,7 +5,6 @@ apps.mil
 attachments-dod.office365-net.us
 auth.microsoft.us
 autodiscover-s-dod.office365.us
-az741266.vo.msecnd.net
 cdn.odc.officeapps.live.com
 cdn.office.net
 clientconfig.microsoftonline-p.net
@@ -80,8 +79,6 @@ security.apps.mil
 sharepoint-mil.us
 slasvc-cses01-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
 slasvc-cses02-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
-spoprod-a.akamaihd.net
-static.sharepointonline.com
 statics.teams.microsoft.com
 svc.ms
 usgovcloud.microsoft

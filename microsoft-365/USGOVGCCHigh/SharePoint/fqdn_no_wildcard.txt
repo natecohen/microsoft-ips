@@ -1,9 +1,6 @@
 admin.onedrive.us
-az741266.vo.msecnd.net
 g.live.com
 oneclient.sfx.ms
 sharepoint.us
-spoprod-a.akamaihd.net
-static.sharepointonline.com
 svc.ms
 wns.windows.com

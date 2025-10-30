@@ -2,8 +2,5 @@
 *.svc.ms
 *.wns.windows.com
 admin.onedrive.us
-az741266.vo.msecnd.net
 g.live.com
 oneclient.sfx.ms
-spoprod-a.akamaihd.net
-static.sharepointonline.com
