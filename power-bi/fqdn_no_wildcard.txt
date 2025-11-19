@@ -6,6 +6,7 @@ arc.msn.com
 arcgis.com
 atlas.microsoft.com
 bing.com
+blob.core.windows.net
 cdnssl.clicktale.net
 community.powerbi.com
 content.powerapps.com
