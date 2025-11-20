@@ -7,10 +7,10 @@
   "windows-11": "08cc4e760b5e1de9ec2ab155acef729b046e8869a15c78222559c39c2e8ec0eb",
   "entra-connect": "61d62a6e8e9fb626541a65e2b07ff43d04c07a2b170a62d95b2053ede0b3228d",
   "entra-connect-health": "4da71b9a9251a1ffc3b2ace9571d57d2ce5c55f0ec73293740322c2990501739",
-  "azure-Public": "5efcd36dd443c9f9d2a5aa10bd7e38ce07abae518ec5ea936581602271554c16",
+  "azure-Public": "e6f38e2eb949b3e018d14a55dccfc7faac02d5b8f781c27f95a875dacafc152e",
   "azure-AzureGermany": "ebd4a78ab59bfe5d73418faf69611094e150b95f01ed22669e2891baf066a4bd",
-  "azure-AzureGovernment": "20f0b62239f05bc053e351e325d6233b7640828c11abbeda7f90ba93a3de6705",
-  "azure-China": "66455662ba4c0fa20a221c7b024a20058755d360ac332acdb833fa1a69038e5e",
+  "azure-AzureGovernment": "8cfaf55ed7811b070f6f09238e6986cdf45bce1bf5842a765ffe1c0e1a2b9461",
+  "azure-China": "a64460fdf225ba2bc28acc5a8bff86bdfd396e5826c0e007d277346e9b42a816",
   "power-bi": "60756dfec2ac1be357d9017d0495df400d54dc3588ce8463d7a8afb94e4199ee",
   "windows-autopilot": "075583e22502520979ff22b12ff825601f2093ae770d71ff839a29c907cce7d2"
 }
