@@ -6,6 +6,7 @@
 *.chinacloudapi.cn
 *.chinacloudapp.cn
 *.chinacloudsites.cn
+*.mail.protection.partner.outlook.cn
 *.microsoftonline.cn
 *.msauth.cn
 *.msauthimages.cn
@@ -25,6 +26,7 @@
 *.protection.partner.outlook.cn
 *.sharepoint.cn
 *.sovcloud.cn
+*.sovcloud-mx.cn
 *.sovcloud-static.cn
 *.sovcloud-usercontent.cn
 *.teams.microsoftonline.cn

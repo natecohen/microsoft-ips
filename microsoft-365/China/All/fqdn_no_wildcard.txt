@@ -12,6 +12,7 @@ crl.microsoft.com
 login.microsoftonline.com
 login.partner.microsoftonline.cn
 loki.office365.cn
+mail.protection.partner.outlook.cn
 microsoftgraph.chinacloudapi.cn
 microsoftonline.cn
 msauth.cn
@@ -38,6 +39,7 @@ r4.partner.outlook.cn
 sharepoint.cn
 shellprod.msocdn.com
 sovcloud.cn
+sovcloud-mx.cn
 sovcloud-static.cn
 sovcloud-usercontent.cn
 teams.microsoftonline.cn
