@@ -9,8 +9,8 @@
   "entra-connect-health": "4da71b9a9251a1ffc3b2ace9571d57d2ce5c55f0ec73293740322c2990501739",
   "azure-Public": "d1141b5e383934453466b0dc66ebe2472fef2ce85a6bce31faa1f7683b4e0885",
   "azure-AzureGermany": "ebd4a78ab59bfe5d73418faf69611094e150b95f01ed22669e2891baf066a4bd",
-  "azure-AzureGovernment": "062d05e2082e8db55bb9384b341d2b23b9e09663617ab3f377cfcdc92ee28da1",
-  "azure-China": "70990f0b7518f210e08d79d9ebc1107b828e0fc32194d5801a7feabfa4388839",
+  "azure-AzureGovernment": "cbba6bebc99f9babdd1695150b0474d53a2acce104fc3d941c76760b273f8393",
+  "azure-China": "a120e385e950e7cd327f227a9073396f0dbcd7db17744a06d9bd8a938ca472e8",
   "power-bi": "60756dfec2ac1be357d9017d0495df400d54dc3588ce8463d7a8afb94e4199ee",
   "windows-autopilot": "075583e22502520979ff22b12ff825601f2093ae770d71ff839a29c907cce7d2"
 }
