@@ -4,8 +4,6 @@
 *.cdn.office.net
 *.chinacloud-mobile.cn
 *.chinacloudapi.cn
-*.chinacloudapp.cn
-*.chinacloudsites.cn
 *.mail.protection.partner.outlook.cn
 *.microsoftonline.cn
 *.msauth.cn
