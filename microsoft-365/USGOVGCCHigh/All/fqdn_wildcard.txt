@@ -72,7 +72,6 @@ officeredir.microsoft.com
 ols.officeapps.live.com
 oneclient.sfx.ms
 outlook.office365.us
-prod.msocdn.us
 purview.microsoft.us
 r.office.microsoft.com
 scc.office365.us

@@ -51,7 +51,6 @@ officehome.msocdn.us
 officepreviewredir.microsoft.com
 officeredir.microsoft.com
 ols.officeapps.live.com
-prod.msocdn.us
 purview.microsoft.us
 r.office.microsoft.com
 scc.office365.us
