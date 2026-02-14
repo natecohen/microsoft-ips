@@ -10,6 +10,7 @@ blob.core.windows.net
 cdnssl.clicktale.net
 community.powerbi.com
 content.powerapps.com
+database.fabric.microsoft.com
 datamart.fabric.microsoft.com
 datamart.pbidedicated.windows.net
 datawarehouse.fabric.microsoft.com

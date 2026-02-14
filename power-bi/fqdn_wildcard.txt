@@ -1,6 +1,7 @@
 *.analysis.windows.net
 *.arcgis.com
 *.blob.core.windows.net
+*.database.fabric.microsoft.com
 *.datamart.fabric.microsoft.com
 *.datamart.pbidedicated.windows.net
 *.datawarehouse.fabric.microsoft.com
