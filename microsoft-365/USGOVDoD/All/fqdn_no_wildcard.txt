@@ -39,7 +39,6 @@ login.windows.net
 login-us.microsoftonline.com
 loginex.microsoftonline.com
 lpcres.delve.office.com
-mamls-fxp-eus-ip.usgovvirginia.cloudapp.usgovcloudapi.net
 mrodevicemgr.officeapps.live.com
 msauth.net
 msauthimages.us
@@ -69,16 +68,12 @@ portal.apps.mil
 protection.apps.mil
 protection.office365.us
 purview.apps.mil
-qrybkr-cses01-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
-qrybkr-cses02-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
 r.office.microsoft.com
 reports.apps.mil
 scc.protection.apps.mil
 secure.aadcdn.microsoftonline-p.com
 security.apps.mil
 sharepoint-mil.us
-slasvc-cses01-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
-slasvc-cses02-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
 statics.teams.microsoft.com
 svc.ms
 usgovcloud.microsoft

@@ -6,8 +6,3 @@ fxpwcpna04.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpxsucpna01.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpxsucpna02.usgovtexas.cloudapp.usgovcloudapi.net
 lgm-svc-fxp-ugv-cses-dns.usgovvirginia.cloudapp.usgovcloudapi.net
-mamls-fxp-eus-ip.usgovvirginia.cloudapp.usgovcloudapi.net
-qrybkr-cses01-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
-qrybkr-cses02-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
-slasvc-cses01-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
-slasvc-cses02-fxp.usgovvirginia.cloudapp.usgovcloudapi.net
