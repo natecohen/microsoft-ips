@@ -4,6 +4,7 @@ crl3.digicert.com
 crl4.digicert.com
 digicert.cn
 entrust.net
+graph.microsoft.com
 graph.windows.net
 login.microsoftonline.com
 login.windows.net

@@ -13,6 +13,7 @@
 *.verisign.com
 *.www.d-trust.net
 adminwebservice.microsoftonline.com
+graph.microsoft.com
 login.microsoftonline.com
 login.windows.net
 mscrl.microsoft.com
