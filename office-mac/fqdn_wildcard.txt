@@ -37,9 +37,7 @@ o15.officeredir.microsoft.com
 ocos-office365-s2s.msedge.net
 ocws.officeapps.live.com
 odc.officeapps.live.com
-officecdn.microsoft.com
 officecdn-microsoft-com.akamaized.net
-officecdnmac.microsoft.com
 officeci.azurewebsites.net
 officeci-mauservice.azurewebsites.net
 officeclient.microsoft.com
@@ -53,6 +51,7 @@ pptcts.officeapps.live.com
 pptsgs.officeapps.live.com
 prod-global-autodetect.acompli.net
 r1.res.office365.com
+res.public.onecdn.static.microsoft
 roaming.officeapps.live.com
 sas.office.microsoft.com
 secure.aadcdn.microsoftonline-p.com
