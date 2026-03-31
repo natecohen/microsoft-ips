@@ -5,10 +5,6 @@ approdimedatapri.azureedge.net
 approdimedatasec.azureedge.net
 clientconfig.passport.net
 config.edge.skype.com
-contentauthassetscdn-prod.azureedge.net
-contentauthassetscdn-prodeur.azureedge.net
-contentauthrafcontentcdn-prod.azureedge.net
-contentauthrafcontentcdn-prodeur.azureedge.net
 dl.delivery.mp.microsoft.com
 do.dsp.mp.microsoft.com
 ecs.communication.microsoft.com

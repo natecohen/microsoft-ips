@@ -57,7 +57,6 @@
 *.protection.outlook.com
 *.public-trust.com
 *.s-microsoft.com
-*.search.production.apac.trafficmanager.net
 *.search.production.emea.trafficmanager.net
 *.search.production.us.trafficmanager.net
 *.security.microsoft.com
@@ -124,10 +123,6 @@ clientconfig.passport.net
 companymanager.microsoftonline.com
 compliance.microsoft.com
 config.edge.skype.com
-contentauthassetscdn-prod.azureedge.net
-contentauthassetscdn-prodeur.azureedge.net
-contentauthrafcontentcdn-prod.azureedge.net
-contentauthrafcontentcdn-prodeur.azureedge.net
 crl.globalsign.com
 crl.globalsign.net
 crl.identrust.com

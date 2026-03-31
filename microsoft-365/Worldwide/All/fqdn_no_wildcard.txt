@@ -45,10 +45,6 @@ cloud.microsoft
 companymanager.microsoftonline.com
 compliance.microsoft.com
 config.edge.skype.com
-contentauthassetscdn-prod.azureedge.net
-contentauthassetscdn-prodeur.azureedge.net
-contentauthrafcontentcdn-prod.azureedge.net
-contentauthrafcontentcdn-prodeur.azureedge.net
 cortana.ai
 crl.globalsign.com
 crl.globalsign.net
@@ -197,7 +193,6 @@ remoteassistanceweb.usgov.communication.azure.us
 remotehelp.microsoft.com
 ris.prod.api.personalization.ideas.microsoft.com
 s-microsoft.com
-search.production.apac.trafficmanager.net
 search.production.emea.trafficmanager.net
 search.production.us.trafficmanager.net
 secure.globalsign.com
