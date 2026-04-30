@@ -43,8 +43,6 @@ dod.teams.microsoft.us
 dod-graph.microsoft.us
 dod-mtis.cortana.ai
 fxpasu01sfring.usgovvirginia.cloudapp.usgovcloudapi.net
-fxpwcpna03.usgovtexas.cloudapp.usgovcloudapi.net
-fxpwcpna04.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpxsucpna01.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpxsucpna02.usgovtexas.cloudapp.usgovcloudapi.net
 g.live.com

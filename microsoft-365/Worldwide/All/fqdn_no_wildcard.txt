@@ -193,8 +193,6 @@ remoteassistanceweb.usgov.communication.azure.us
 remotehelp.microsoft.com
 ris.prod.api.personalization.ideas.microsoft.com
 s-microsoft.com
-search.production.emea.trafficmanager.net
-search.production.us.trafficmanager.net
 secure.globalsign.com
 security.microsoft.com
 sharepoint.com

@@ -57,8 +57,6 @@
 *.protection.outlook.com
 *.public-trust.com
 *.s-microsoft.com
-*.search.production.emea.trafficmanager.net
-*.search.production.us.trafficmanager.net
 *.security.microsoft.com
 *.sharepoint.com
 *.sharepointonline.com

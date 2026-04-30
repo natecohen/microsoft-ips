@@ -1,8 +1,6 @@
 cmgwpesvcust.usgovtexas.cloudapp.usgovcloudapi.net
 cmgwpesvcusv.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpasu01sfring.usgovvirginia.cloudapp.usgovcloudapi.net
-fxpwcpna03.usgovtexas.cloudapp.usgovcloudapi.net
-fxpwcpna04.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpxsucpna01.usgovvirginia.cloudapp.usgovcloudapi.net
 fxpxsucpna02.usgovtexas.cloudapp.usgovcloudapi.net
 lgm-svc-fxp-ugv-cses-dns.usgovvirginia.cloudapp.usgovcloudapi.net
