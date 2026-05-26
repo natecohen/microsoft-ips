@@ -1,5 +1,4 @@
 azure.microsoft.com
-cs.dds.microsoft.com
 ekcert.spserv.microsoft.com
 ekop.intel.com
 ftpm.amd.com
