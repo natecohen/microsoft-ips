@@ -40,7 +40,6 @@ office.delivery.microsoft.com
 office15client.microsoft.com
 office365.us
 officecdn.microsoft.com
-officecdn.microsoft.com.edgesuite.net
 officeclient.microsoft.com
 officehome.msocdn.us
 officepreviewredir.microsoft.com

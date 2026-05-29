@@ -44,7 +44,6 @@ ocws.officeapps.live.com
 odc.officeapps.live.com
 office15client.microsoft.com
 officecdn.microsoft.com
-officecdn.microsoft.com.edgesuite.net
 officeclient.microsoft.com
 officepreviewredir.microsoft.com
 officeredir.microsoft.com

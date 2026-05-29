@@ -128,7 +128,6 @@ office.live.com
 office15client.microsoft.com
 officeapps.live.com
 officecdn.microsoft.com
-officecdn.microsoft.com.edgesuite.net
 officeclient.microsoft.com
 officepreviewredir.microsoft.com
 officeredir.microsoft.com
