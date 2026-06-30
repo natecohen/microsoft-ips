@@ -38,7 +38,6 @@ lpcres.delve.office.com
 mrodevicemgr.officeapps.live.com
 mscrl.microsoft.com
 nexus.microsoftonline-p.com
-ocsa.officeapps.live.com
 ocsredir.officeapps.live.com
 ocws.officeapps.live.com
 odc.officeapps.live.com

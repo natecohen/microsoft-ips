@@ -39,7 +39,6 @@ msftauth.net
 msftauthimages.us
 msteamsstatics.blob.core.usgovcloudapi.net
 nexus.microsoftonline-p.com
-ocsa.officeapps.live.com
 ocsredir.officeapps.live.com
 ocws.officeapps.live.com
 odc.officeapps.live.com

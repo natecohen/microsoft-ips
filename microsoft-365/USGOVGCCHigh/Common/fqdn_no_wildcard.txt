@@ -32,7 +32,6 @@ mscrl.microsoft.com
 msftauth.net
 msftauthimages.us
 nexus.microsoftonline-p.com
-ocsa.officeapps.live.com
 ocsredir.officeapps.live.com
 ocws.officeapps.live.com
 odc.officeapps.live.com
