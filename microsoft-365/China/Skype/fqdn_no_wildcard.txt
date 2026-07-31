@@ -1,2 +1,1 @@
-partner.lync.cn
 teams.microsoftonline.cn

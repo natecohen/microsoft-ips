@@ -24,6 +24,7 @@
 *.sovcloud-usercontent.cn
 *.windowsazure.cn
 activation.sls.microsoft.com
+collector.azure.cn
 crl.microsoft.com
 login.microsoftonline.com
 login.partner.microsoftonline.cn

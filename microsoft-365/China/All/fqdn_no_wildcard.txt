@@ -6,6 +6,7 @@ azure-mobile.cn
 cdn.office.net
 chinacloud-mobile.cn
 chinacloudapi.cn
+collector.azure.cn
 crl.microsoft.com
 login.microsoftonline.com
 login.partner.microsoftonline.cn
@@ -22,7 +23,6 @@ officecdn.microsoft.com
 officeclient.microsoft.com
 officewebapps.cn
 onmschina.cn
-partner.lync.cn
 partner.microsoftonline.cn
 partner.microsoftonline-m.net.cn
 partner.microsoftonline-m-i.net.cn

@@ -12,7 +12,6 @@
 *.msftauthimages.cn
 *.officewebapps.cn
 *.onmschina.cn
-*.partner.lync.cn
 *.partner.microsoftonline.cn
 *.partner.microsoftonline-m.net.cn
 *.partner.microsoftonline-m-i.net.cn
@@ -32,6 +31,7 @@
 *.wns.windows.com
 activation.sls.microsoft.com
 attachments.office365-net.cn
+collector.azure.cn
 crl.microsoft.com
 login.microsoftonline.com
 login.partner.microsoftonline.cn

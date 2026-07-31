@@ -146,7 +146,6 @@ verisign.net
 virtualearth.net
 wus-www.sway-cdn.com
 wus-www.sway-extensions.com
-www.acompli.com
 www.bing.com
 www.digicert.com
 www.microsoft.com
