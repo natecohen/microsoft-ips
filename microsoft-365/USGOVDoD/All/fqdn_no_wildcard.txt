@@ -8,6 +8,8 @@ autodiscover-s-dod.office365.us
 cdn.odc.officeapps.live.com
 cdn.office.net
 clientconfig.microsoftonline-p.net
+cmgwpesvcust.usgovtexas.cloudapp.usgovcloudapi.net
+cmgwpesvcusv.usgovvirginia.cloudapp.usgovcloudapi.net
 compliance.apps.mil
 crl.microsoft.com
 dod.activity.windows.us
@@ -17,6 +19,9 @@ dod.teams.microsoft.us
 dod-graph.microsoft.us
 dod-mtis.cortana.ai
 dps.mil
+fxpasu01sfring.usgovvirginia.cloudapp.usgovcloudapi.net
+fxpxsucpna01.usgovvirginia.cloudapp.usgovcloudapi.net
+fxpxsucpna02.usgovtexas.cloudapp.usgovcloudapi.net
 g.live.com
 go.microsoft.com
 gov.us.microsoftonline.com
@@ -24,6 +29,7 @@ graph.microsoftazure.us
 graph.windows.net
 informationprotection.azure.us
 insertmedia.bing.office.net
+lgm-svc-fxp-ugv-cses-dns.usgovvirginia.cloudapp.usgovcloudapi.net
 login.microsoftonline.com
 login.microsoftonline.us
 login.microsoftonline-p.com
