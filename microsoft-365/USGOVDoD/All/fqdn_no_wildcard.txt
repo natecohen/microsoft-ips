@@ -56,7 +56,6 @@ officepreviewredir.microsoft.com
 officeredir.microsoft.com
 ols.officeapps.live.com
 oneclient.sfx.ms
-online.dod.skypeforbusiness.us
 outlook-dod.office365.us
 pf.events.data.microsoft.com
 pf.pipe.aria.microsoft.com

@@ -1,4 +1,3 @@
 dod.teams.microsoft.us
 msteamsstatics.blob.core.usgovcloudapi.net
-online.dod.skypeforbusiness.us
 statics.teams.microsoft.com

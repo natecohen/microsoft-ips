@@ -12,7 +12,6 @@
 *.msftauth.net
 *.msftauthimages.us
 *.office365.us
-*.online.dod.skypeforbusiness.us
 *.protection.apps.mil
 *.protection.office365.us
 *.security.apps.mil
